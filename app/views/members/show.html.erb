@@ -1,49 +1,61 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
 
-<p>
-  <strong>Name:</strong>
-  <%= @member.name %>
-</p>
+    </div>
+    <div class="col-sm">
+      <p id="notice"><%= notice %></p>
+      <%= link_to 'Edit', edit_member_path(@member), class: "btn btn-info" %> | <%= link_to 'Back', members_path, class: "btn btn-success" %> <br /><br />
 
-<p>
-  <strong>Email:</strong>
-  <%= @member.email %>
-</p>
+      <p>
+        <strong>Name:</strong>
+        <%= @member.name %>
+      </p>
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @member.birthday %>
-</p>
+      <p>
+        <strong>Email:</strong>
+        <%= @member.email %>
+      </p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @member.phone_number %>
-</p>
+      <p>
+        <strong>Birthday:</strong>
+        <%= @member.birthday %>
+      </p>
 
-<p>
-  <strong>Age:</strong>
-  <%= @member.age %>
-</p>
+      <p>
+        <strong>Phone number:</strong>
+        <%= @member.phone_number %>
+      </p>
 
-<p>
-  <strong>Primary education:</strong>
-  <%= @member.primary_education %>
-</p>
+      <p>
+        <strong>Age:</strong>
+        <%= @member.age %>
+      </p>
 
-<p>
-  <strong>Secondary education:</strong>
-  <%= @member.secondary_education %>
-</p>
+      <p>
+        <strong>Primary education:</strong>
+        <%= @member.primary_education %>
+      </p>
 
-<p>
-  <strong>Above secondary:</strong>
-  <%= @member.above_secondary %>
-</p>
+      <p>
+        <strong>Secondary education:</strong>
+        <%= @member.secondary_education %>
+      </p>
 
-<p>
-  <strong>Skills:</strong>
-  <%= @member.skills %>
-</p>
+      <p>
+        <strong>Above secondary:</strong>
+        <%= @member.above_secondary %>
+      </p>
 
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+      <p>
+        <strong>Skills:</strong>
+        <%= @member.skills %>
+      </p>
+
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>
+

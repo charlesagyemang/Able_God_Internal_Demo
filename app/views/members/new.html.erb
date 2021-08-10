@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
+  
     <div class="col-sm">
-
+    <br />
+        <%= link_to '< Back', members_path, class: "btn btn-outline-info" %>
     </div>
     <div class="col-sm">
       <h1> New Member</h1>
@@ -12,6 +14,6 @@
   </div>
 </div>
 <br />
-<%= render 'form', member: @member,  :namerrr => "Neww Memberrr" %>
+<%= render 'form', member: @member %>
 
-<%= link_to 'Back', members_path %>
+

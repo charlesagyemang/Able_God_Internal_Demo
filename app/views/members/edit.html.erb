@@ -1,6 +1,21 @@
-<h1>Editing Member</h1>
+
+<div class="container">
+  <div class="row">
+  
+    <div class="col-sm">
+        <br>
+        <%= link_to 'Show', @member, class: "btn btn-outline-info" %> | <%= link_to 'Back', members_path, class: "btn btn-outline-success" %>
+    </div>
+    <div class="col-sm">
+      <h1> Edit Member</h1>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+
+</div>
+<br />
 
 <%= render 'form', member: @member %>
 
-<%= link_to 'Show', @member %> |
-<%= link_to 'Back', members_path %>

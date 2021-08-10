@@ -11,27 +11,50 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="field">
+          <%= form.label :meeting_days %>
+          <%= form.text_field :meeting_days, class: "form-control" %>
+        </div>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :meeting_days %>
-    <%= form.text_field :meeting_days %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+       <div class="field">
+        <%= form.label :vision %>
+        <%= form.text_area :vision, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="field">
+        <%= form.label :motto %>
+        <%= form.text_field :motto, class: "form-control" %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :vision %>
-    <%= form.text_area :vision %>
-  </div>
 
-  <div class="field">
-    <%= form.label :motto %>
-    <%= form.text_field :motto %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+        <div class="actions">
+          <%= form.submit "SUBMIT", class: "btn btn-primary btn-lg" %>
+        </div>
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
 <% end %>

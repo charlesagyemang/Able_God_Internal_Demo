@@ -3,9 +3,9 @@
 
 <h1>Members</h1>
 
-<%= link_to 'Add New Member', new_member_path, class: "btn btn-primary" %> <br /><br />
+<%= link_to 'Add New Member', new_member_path, class: "btn btn-outline-primary" %> <br /><br />
 
-<table class="table table-dark">
+<table class="table table-stripped">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -13,6 +13,11 @@
       <th scope="col">DOB</th>
       <th scope="col">Phone</th>
       <th scope="col">Age</th>
+
+      <th scope="col">Show</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+
     </tr>
   </thead>
   <tbody>
@@ -23,9 +28,9 @@
         <td><%= member.birthday %></td>
         <td><%= member.phone_number %></td>
         <td><%= member.age %></td>
-        <td><%= link_to 'Show', member, class: "btn btn-success"%></td>
-        <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-info" %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <td><%= link_to 'Show', member, class: "btn btn-outline-success"%></td>
+        <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-outline-info" %></td>
+        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>
