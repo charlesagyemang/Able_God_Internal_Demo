@@ -1,0 +1,34 @@
+<div class="container-fluid">
+<p id="notice"><%= notice %></p>
+
+<h1>Members</h1>
+
+<%= link_to 'Add New Member', new_member_path, class: "btn btn-primary" %> <br /><br />
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">DOB</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <th scope="row"><%= member.name %></td>
+        <td><%= member.email %></td>
+        <td><%= member.birthday %></td>
+        <td><%= member.phone_number %></td>
+        <td><%= member.age %></td>
+        <td><%= link_to 'Show', member, class: "btn btn-success"%></td>
+        <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-info" %></td>
+        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

@@ -1,0 +1,33 @@
+<div class="container-fluid">
+<p id="notice"><%= notice %></p>
+
+<h1>Leaders</h1>
+
+<%= link_to 'New Leader', new_leader_path, class: "btn btn-primary" %>
+<br><br>
+
+ <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">Position</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @leaders.includes(:member, :department).each do |leader| %>
+        <tr>
+          <td><%= leader.member.name %></td>
+          <td><%= leader.department.name %></td>
+          <td><%= leader.leader_type %></td>
+          <td><%= link_to 'Show', leader, class: "btn btn-success" %></td>
+          <td><%= link_to 'Edit', edit_leader_path(leader), class: "btn btn-info" %></td>
+          <td><%= link_to 'Destroy', leader, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+  </tbody>
+  </table>
+
+
+
+</div>

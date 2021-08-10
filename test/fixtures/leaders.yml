@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member: one
+  department: one
+  leader_type: MyString
+
+two:
+  member: two
+  department: two
+  leader_type: MyString

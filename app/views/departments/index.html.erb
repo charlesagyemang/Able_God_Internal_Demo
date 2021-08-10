@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Departments</h1>
+  <%= link_to 'New Department', new_department_path, class: "btn btn-primary" %>
+  <br /> <br />
+
+
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Meeting Days</th>
+        <th scope="col">Motto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @departments.each do |department| %>
+        <tr>
+          <td><%= department.name %></td>
+          <td><%= department.meeting_days %></td>
+          <td><%= department.motto %></td>
+          <td><%= link_to 'Show', department, class: "btn btn-success" %></td>
+          <td><%= link_to 'Edit', edit_department_path(department), class: "btn btn-info" %></td>
+          <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  </div>
+
+</div>

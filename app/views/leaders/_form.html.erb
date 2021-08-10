@@ -1,0 +1,32 @@
+<%= form_with(model: leader) do |form| %>
+  <% if leader.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(leader.errors.count, "error") %> prohibited this leader from being saved:</h2>
+
+      <ul>
+        <% leader.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :member_id %>
+    <%= collection_select(:leader, :member_id, Member.all, :id, :name, {}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department_id %>
+    <%= collection_select(:leader, :department_id, Department.all, :id, :name, {}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :leader_type %>
+    <%= form.select(:leader_type, options_for_select(["HEAD", "ASSISTANT", "SECRETARY", "TREASURER"])) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<%= form_with(model: department) do |form| %>
+  <% if department.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(department.errors.count, "error") %> prohibited this department from being saved:</h2>
+
+      <ul>
+        <% department.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :meeting_days %>
+    <%= form.text_field :meeting_days %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vision %>
+    <%= form.text_area :vision %>
+  </div>
+
+  <div class="field">
+    <%= form.label :motto %>
+    <%= form.text_field :motto %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
