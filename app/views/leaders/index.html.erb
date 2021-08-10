@@ -4,14 +4,18 @@
 <h1>Leaders</h1>
 
 <%= link_to 'New Leader', new_leader_path, class: "btn btn-outline-primary" %>
-<br><br>
+<br><br><br />
 
- <table class="table table-stripped">
+ <table class="table table-stripped" id="leaders-list-table">
     <thead>
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Department</th>
         <th scope="col">Position</th>
+
+        <th scope="col">Shoe</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -27,7 +31,20 @@
       <% end %>
   </tbody>
   </table>
-
-
-
 </div>
+
+<% content_for :page_scripts do %>
+  <script>
+
+    function readyy(){
+       $("#leaders-list-table").DataTable({
+        dom: 'Bfrtip',
+       })
+    }
+
+    $(document).ready(readyy)
+    $(document).on('page:load', readyy)
+   
+  </script>
+
+<% end %>

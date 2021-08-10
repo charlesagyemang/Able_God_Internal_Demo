@@ -6,12 +6,16 @@
   <br /> <br />
 
 
-  <table class="table table-stripped">
+  <table class="table table-stripped" id="list-table">
     <thead>
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Meeting Days</th>
         <th scope="col">Motto</th>
+
+        <th scope="col">Show</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -31,3 +35,19 @@
   </div>
 
 </div>
+
+<% content_for :page_scripts do %>
+  <script>
+
+    function readyy(){
+       $("#list-table").DataTable({
+        dom: 'Bfrtip',
+       })
+    }
+
+    $(document).ready(readyy)
+    $(document).on('page:load', readyy)
+   
+  </script>
+
+<% end %>

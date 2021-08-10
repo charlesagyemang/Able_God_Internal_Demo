@@ -5,7 +5,7 @@
 
 <%= link_to 'Add New Member', new_member_path, class: "btn btn-outline-primary" %> <br /><br />
 
-<table class="table table-stripped">
+<table class="table table-stripped" id="list-table">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -37,3 +37,20 @@
 </table>
 
 </div>
+
+
+<% content_for :page_scripts do %>
+  <script>
+
+    function readyy(){
+       $("#list-table").DataTable({
+        dom: 'Bfrtip',
+       })
+    }
+
+    $(document).ready(readyy)
+    $(document).on('page:load', readyy)
+   
+  </script>
+
+<% end %>
