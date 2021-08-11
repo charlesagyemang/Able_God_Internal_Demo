@@ -1,0 +1,26 @@
+<%= form_with(model: lineup) do |form| %>
+  <% if lineup.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lineup.errors.count, "error") %> prohibited this lineup from being saved:</h2>
+      <ul>
+        <% lineup.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :service_id %>
+    <%= collection_select(:lineup, :service_id, Service.all, :id, :id, {}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mc %>
+    <%= form.text_field :mc %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

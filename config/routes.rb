@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :programmes
+  resources :lineups
+  resources :services
   resources :leaders
   resources :members
   resources :departments

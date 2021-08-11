@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lineups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ServiceId</th>
+      <th>Mc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lineups.each do |lineup| %>
+      <tr>
+        <td><%= lineup.service_id %></td>
+        <td><%= lineup.mc %></td>
+        <td><%= link_to 'Show', lineup %></td>
+        <td><%= link_to 'Edit', edit_lineup_path(lineup) %></td>
+        <td><%= link_to 'Destroy', lineup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lineup', new_lineup_path %>

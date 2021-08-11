@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  name: MyString
+  facilitator: MyString
+  time_allocation_in_minutes: MyString
+
+two:
+  references: 
+  name: MyString
+  facilitator: MyString
+  time_allocation_in_minutes: MyString

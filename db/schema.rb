@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_070512) do
+ActiveRecord::Schema.define(version: 2021_08_11_134334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2021_08_11_070512) do
     t.index ["member_id"], name: "index_leaders_on_member_id"
   end
 
+  create_table "lineups", force: :cascade do |t|
+    t.bigint "service_id", null: false
+    t.text "mc"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_id"], name: "index_lineups_on_service_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -58,6 +66,30 @@ ActiveRecord::Schema.define(version: 2021_08_11_070512) do
     t.string "whatsapp"
   end
 
+  create_table "programmes", force: :cascade do |t|
+    t.bigint "lineup_id", null: false
+    t.string "name"
+    t.string "facilitator"
+    t.string "time_allocation_in_minutes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lineup_id"], name: "index_programmes_on_lineup_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.date "date"
+    t.integer "male_attendance"
+    t.integer "female_attendance"
+    t.integer "number_of_new_comers"
+    t.integer "offertory_amount"
+    t.integer "tithe_amount"
+    t.datetime "starting_time"
+    t.datetime "closing_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "service_type"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -72,4 +104,6 @@ ActiveRecord::Schema.define(version: 2021_08_11_070512) do
 
   add_foreign_key "leaders", "departments"
   add_foreign_key "leaders", "members"
+  add_foreign_key "lineups", "services"
+  add_foreign_key "programmes", "lineups"
 end

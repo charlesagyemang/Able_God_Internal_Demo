@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  date: 2021-08-11
+  male_attendance: 1
+  female_attendance: 1
+  number_of_new_comers: 1
+  offertory_amount: 1
+  tithe_amount: 1
+  starting_time: 2021-08-11 13:25:48
+  closing_time: 2021-08-11 13:25:48
+
+two:
+  type: 
+  date: 2021-08-11
+  male_attendance: 1
+  female_attendance: 1
+  number_of_new_comers: 1
+  offertory_amount: 1
+  tithe_amount: 1
+  starting_time: 2021-08-11 13:25:48
+  closing_time: 2021-08-11 13:25:48
