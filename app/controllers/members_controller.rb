@@ -71,8 +71,7 @@ class MembersController < ApplicationController
         :phone_number, 
         :primary_education, 
         :secondary_education, 
-        :above_secondary, 
-        :whatsapp_number,
+        :above_secondary,
         :twitter_name,
         :facebook_name,
         :phone_number_two,
@@ -80,7 +79,8 @@ class MembersController < ApplicationController
         :occupation,
         :telegram_number,
         :phone_number_four,
-        :year_joined
+        :year_joined,
+        :whatsapp
       )
     end
 end

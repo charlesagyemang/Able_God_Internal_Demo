@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_054822) do
+ActiveRecord::Schema.define(version: 2021_08_11_070512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2021_08_11_054822) do
     t.json "other", default: {}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "whatsapp_number"
     t.string "twitter_name"
     t.string "facebook_name"
     t.string "phone_number_two"
@@ -56,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_08_11_054822) do
     t.string "telegram_number"
     t.string "occupation"
     t.string "year_joined"
+    t.string "whatsapp"
   end
 
   create_table "users", force: :cascade do |t|
