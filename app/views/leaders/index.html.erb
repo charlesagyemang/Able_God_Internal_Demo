@@ -6,7 +6,7 @@
 <%= link_to 'New Leader', new_leader_path, class: "btn btn-outline-primary" %>
 <br><br><br />
 
- <table class="table table-stripped" id="leaders-list-table">
+ <table class="table table-stripped" id="list-table">
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -37,7 +37,7 @@
   <script>
 
     function readyy(){
-       $("#leaders-list-table").DataTable({
+       $("#list-table").DataTable({
         dom: 'Bfrtip',
        })
     }
