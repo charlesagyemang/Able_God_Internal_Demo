@@ -1,5 +1,6 @@
 class LeadersController < ApplicationController
   before_action :set_leader, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /leaders or /leaders.json
   def index
