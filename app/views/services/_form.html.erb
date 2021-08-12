@@ -13,7 +13,12 @@
 
   <div class="field">
     <%= form.label :service_type %>
-    <%= form.select(:service_type, options_for_select(["SUNDAY", "THURSDAY", "YOUTH-SERVICE", "WOMENS-FELLOWSHIP", "MENS-FELLOWSHIP", "OTHER", "REVIVAL"])) %>
+    <%= form.select(:service_type, options_for_select(["SUNDAY", "THURSDAY", "YOUTH-SERVICE", "WOMENS-FELLOWSHIP", "MENS-FELLOWSHIP", "CELL-MEETING", "OTHER", "REVIVAL"])) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department_id %>
+    <%= collection_select(:service, :leader_id, Leader.all.includes(:department), :id, :department_leader, {}) %>
   </div>
 
   <div class="field">

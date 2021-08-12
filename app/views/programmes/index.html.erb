@@ -1,35 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Programmes</h1>
+<h1>Activities</h1>
 
-<table>
+<%= link_to 'Add New Activity', new_programme_path, class: "btn btn-outline-primary" %><br><br>
+
+<table class="table table-stripped" id="list-table">
   <thead>
     <tr>
       <th>LineupId</th>
-      <th>ServiceId</th>
       <th>Programme</th>
       <th>Facilitator</th>
       <th>Time Allocated</th>
-      <th colspan="3"></th>
+
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+
     </tr>
   </thead>
-
   <tbody>
     <% @programmes.includes(:lineup).each do |programme| %>
       <tr>
         <td><%= programme.lineup.id %></td>
-        <td><%= programme.lineup.service_id %></td>
         <td><%= programme.name %></td>
         <td><%= programme.facilitator %></td>
         <td><%= programme.time_allocation_in_minutes %></td>
-        <td><%= link_to 'Show', programme %></td>
-        <td><%= link_to 'Edit', edit_programme_path(programme) %></td>
-        <td><%= link_to 'Destroy', programme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', programme, class: "btn btn-outline-info" %></td>
+        <td><%= link_to 'Edit', edit_programme_path(programme), class: "btn btn-outline-success" %></td>
+        <td><%= link_to 'Destroy', programme, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+</div>
+
 <br>
 
-<%= link_to 'New Programme', new_programme_path %>
+
+<% content_for :page_scripts do %>
+  <script>
+
+    function readyy(){
+       $("#list-table").DataTable({
+        dom: 'Bfrtip',
+       })
+    }
+
+    $(document).ready(readyy)
+    $(document).on('page:load', readyy)
+   
+  </script>
+
+<% end %>

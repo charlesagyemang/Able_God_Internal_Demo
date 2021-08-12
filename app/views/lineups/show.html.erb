@@ -1,13 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>References:</strong>
-  <%= @lineup.service_id %>
+  <strong>Service Details</strong><br>
+  Type: <%= @lineup.service.service_type %> SERVICE [<%= @lineup.service.date %>]<br>
+  Starting Time: <%= @lineup.service.starting_time.to_s.split(" ")[1] %><br>
+  Ending Time:  <%= @lineup.service.closing_time.to_s.split(" ")[1] %><br>
 </p>
 
 <p>
-  <strong>Mc:</strong>
+  <strong>Mc</strong>
   <%= @lineup.mc %>
+</p>
+
+<p>
+  <strong>Programme Line Up</strong><br>
+  <%@lineup.programme.each do |prog| %>
+    <%= prog.name %>
+    <%= prog.time_allocation_in_minutes %> Minutes
+    <%= prog.facilitator %>
+    <br>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_lineup_path(@lineup) %> |

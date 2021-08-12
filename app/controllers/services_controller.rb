@@ -64,6 +64,7 @@ class ServicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def service_params
-      params.require(:service).permit(:service_type, :date, :male_attendance, :female_attendance, :number_of_new_comers, :offertory_amount, :tithe_amount, :starting_time, :closing_time)
+      params.require(:service).permit(:service_type, :date, :male_attendance, :female_attendance, 
+        :number_of_new_comers, :offertory_amount, :tithe_amount, :starting_time, :closing_time, :leader_id)
     end
 end

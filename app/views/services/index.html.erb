@@ -2,44 +2,58 @@
 
 <h1>Services</h1>
 
-<table>
+<%= link_to 'Add A New Service', new_service_path, class: "btn btn-outline-primary" %>
+<br><br>
+
+<table class="table table-stripped" id="list-table">
   <thead>
     <tr>
-      <th>ServiceId</th>
       <th>Type</th>
       <th>Date</th>
-      <th>Male attendance</th>
-      <th>Female attendance</th>
-      <th>Number of new comers</th>
-      <th>Offertory amount</th>
-      <th>Tithe amount</th>
+      <th>Attendance</th>
+      <th>Freshers</th>
       <th>Starting time</th>
       <th>Closing time</th>
-      <th colspan="3"></th>
+
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+
     </tr>
   </thead>
-
   <tbody>
     <% @services.each do |service| %>
       <tr>
-        <td><%= service.id %></td>
         <td><%= service.service_type %></td>
         <td><%= service.date %></td>
-        <td><%= service.male_attendance %></td>
-        <td><%= service.female_attendance %></td>
+        <td><%= service.male_attendance.to_i + service.female_attendance.to_i %></td>
         <td><%= service.number_of_new_comers %></td>
-        <td><%= service.offertory_amount %></td>
-        <td><%= service.tithe_amount %></td>
-        <td><%= service.starting_time %></td>
-        <td><%= service.closing_time %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= service.starting_time.to_s.split(" ")[1] %></td>
+        <td><%= service.closing_time.to_s.split(" ")[1]  %></td>
+        <td><%= link_to 'Show', service, class: "btn btn-outline-info" %></td>
+        <td><%= link_to 'Edit', edit_service_path(service), class: "btn btn-outline-success" %></td>
+        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+</div>
+
 <br>
 
-<%= link_to 'New Service', new_service_path %>
+<% content_for :page_scripts do %>
+  <script>
+
+    function readyy(){
+       $("#list-table").DataTable({
+        dom: 'Bfrtip',
+       })
+    }
+
+    $(document).ready(readyy)
+    $(document).on('page:load', readyy)
+   
+  </script>
+
+<% end %>

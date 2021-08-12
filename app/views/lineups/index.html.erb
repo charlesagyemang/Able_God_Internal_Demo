@@ -2,28 +2,54 @@
 
 <h1>Lineups</h1>
 
-<table>
+<%= link_to 'New Lineup', new_lineup_path, class: "btn btn-outline-primary" %><br><br>
+
+<table class="table table-stripped" id="list-table">
   <thead>
     <tr>
-      <th>ServiceId</th>
+      <th>LineUp Id</th>
+      <th>Service</th>
       <th>Mc</th>
-      <th colspan="3"></th>
+      <th>Activities</th>
+
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+
     </tr>
   </thead>
-
   <tbody>
-    <% @lineups.each do |lineup| %>
+    <% @lineups.includes(:service, :programme).each do |lineup| %>
       <tr>
-        <td><%= lineup.service_id %></td>
+        <td><%= lineup.id %></td>
+        <td><%= lineup.service.service_type %> SERVICE [<%= lineup.service.date %>] - PLU</td>
         <td><%= lineup.mc %></td>
-        <td><%= link_to 'Show', lineup %></td>
-        <td><%= link_to 'Edit', edit_lineup_path(lineup) %></td>
-        <td><%= link_to 'Destroy', lineup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= lineup.programme.length %></td>
+        <td><%= link_to 'Show', lineup,  class: "btn btn-outline-info" %></td>
+        <td><%= link_to 'Edit', edit_lineup_path(lineup),  class: "btn btn-outline-success" %></td>
+        <td><%= link_to 'Destroy', lineup, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-outline-danger"%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+</div>
+
 <br>
 
-<%= link_to 'New Lineup', new_lineup_path %>
+
+<% content_for :page_scripts do %>
+  <script>
+
+    function readyy(){
+       $("#list-table").DataTable({
+        dom: 'Bfrtip',
+       })
+    }
+
+    $(document).ready(readyy)
+    $(document).on('page:load', readyy)
+   
+  </script>
+
+<% end %>

@@ -12,7 +12,7 @@
 
   <div class="field">
     <%= form.label :service_id %>
-    <%= collection_select(:lineup, :service_id, Service.all, :id, :id, {}) %>
+    <%= collection_select(:lineup, :service_id, Service.all, :id, :type_with_date , {}) %>
   </div>
 
   <div class="field">
