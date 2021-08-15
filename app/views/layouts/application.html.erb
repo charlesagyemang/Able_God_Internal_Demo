@@ -29,23 +29,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>  
 
-  </head>
-
-  <body> 
-    <% if request.env['REQUEST_URI'] != "/users/sign_in" %>
-   
-        <%= render  partial: "shared/navbar" %>
-
-    <% end%>
-    <%= yield %>
-  </body>
-  <footer>
-    <%# <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> %>
-    <%= yield :page_scripts %>
-
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
-
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
@@ -53,22 +38,15 @@
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 
+  </head>
 
-        <!-- Bootstrap core JavaScript-->
-    <script src="theme/vendor/jquery/jquery.min.js"></script>
-    <script src="theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="theme/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="theme/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="theme/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="theme/js/demo/chart-area-demo.js"></script>
-    <script src="theme/js/demo/chart-pie-demo.js"></script>
+  <body> 
+    <% if request.env['REQUEST_URI'] != "/users/sign_in" %>
+      <%= render  partial: "shared/navbar" %>
+    <% end%>
+    <%= yield %>
+  </body>
+  <footer>
+    <%= yield :page_scripts %>
   </footer>
 </html>
