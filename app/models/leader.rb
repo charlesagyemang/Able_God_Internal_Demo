@@ -5,5 +5,10 @@ class Leader < ApplicationRecord
   def department_leader
     "#{department.name}"
   end
+
+  def member_name
+    member = Member.find(member_id)
+    "#{member.name}"
+  end
   
 end

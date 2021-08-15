@@ -2,9 +2,6 @@ class Service < ApplicationRecord
 
     has_one :lineup, dependent: :destroy
 
-
-    default_scope { order(updated_at: :desc) }
-
     def type_with_date
         "#{service_type}[#{date}]"
     end

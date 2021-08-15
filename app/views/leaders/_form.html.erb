@@ -12,17 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :member_id %>
+    <%= form.label :select_leader %>
     <%= collection_select(:leader, :member_id, Member.all, :id, :name, {}) %>
+
+    
   </div>
 
-  <div class="field">
+  <div class="field invisible">
     <%= form.label :department_id %>
-    <%= collection_select(:leader, :department_id, Department.all, :id, :name, {}) %>
+    <%= collection_select(:leader, :department_id, Department.all, :id, :name, { selected: params[:department_id]}) %>
   </div>
 
   <div class="field">
-    <%= form.label :leader_type %>
+    <%= form.label :select_position %>
     <%= form.select(:leader_type, options_for_select(["HEAD", "ASSISTANT", "SECRETARY", "TREASURER"])) %>
   </div>
 

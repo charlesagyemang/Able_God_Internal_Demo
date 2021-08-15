@@ -4,6 +4,8 @@ class DepartmentsController < ApplicationController
 
   # GET /departments or /departments.json
   def index
+    @department = Department.new
+    @leader = Leader.new
     @departments = Department.all
   end
 
@@ -60,7 +62,7 @@ class DepartmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_department
-      @department = Department.find(params[:id])
+      @department = Department.includes(:leaders).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -20,5 +20,14 @@
   <%= @department.motto %>
 </p>
 
+
+<p>
+  <strong>Leaders:</strong><br>
+  <% @department.leaders.each do |leader| %>
+    <%= leader.member_name %> <%= leader.leader_type %><br>
+  <% end %>
+</p>
+
+
 <%= link_to 'Edit', edit_department_path(@department) %> |
 <%= link_to 'Back', departments_path %>
