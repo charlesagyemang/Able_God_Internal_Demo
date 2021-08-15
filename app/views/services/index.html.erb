@@ -43,11 +43,9 @@
       <th>Starting time</th>
       <th>Closing time</th>
       <th>Line Up</th>
-
       <th>Show</th>
-      <th>Edit</th>
+      <th>Edit Service</th>
       <th>Delete</th>
-
     </tr>
   </thead>
   <tbody>
@@ -56,7 +54,7 @@
         <td><%= service.service_type %></td>
         <td><%= service.date %></td>
         <td><%= service.male_attendance.to_i + service.female_attendance.to_i %></td>
-        <td><%= service.number_of_new_comers %></td>
+        <td><%= service.number_of_new_comers || 0 %></td>
         <td><%= service.starting_time.to_s.split(" ")[1] %></td>
         <td><%= service.closing_time.to_s.split(" ")[1]  %></td>
         <td>
@@ -65,8 +63,56 @@
           <%= link_to 'Add Activities', new_programme_path(:lineup => service.lineup ), class: "btn btn-outline-success" %><br><br>
         </td>
 
-        <td><%= link_to 'Show', service, class: "btn btn-outline-info" %></td>
-        <td><%= link_to 'Edit', edit_service_path(service), class: "btn btn-outline-success" %></td>
+        <td>
+          <div class="modal fade" id="show_<%=service.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Service (<%= service.id %>)</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                   <%= render partial: 'show', :locals => {service: service}  %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show_<%=service.id%>">
+            View
+          </button>
+        </td>
+
+        <td>
+          <div class="modal fade" id="edit_<%=service.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Service (<%= service.id %>)</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                   <%= render 'form', service: service %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit_<%=service.id%>">
+            Edit
+          </button>
+        </td>
+
         <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
