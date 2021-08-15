@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= department.name %>
+</p>
+
+<p>
+  <strong>Meeting days:</strong>
+  <%= department.meeting_days %>
+</p>
+
+<p>
+  <strong>Vision:</strong>
+  <%= department.vision %>
+</p>
+
+<p>
+  <strong>Motto:</strong>
+  <%= department.motto %>
+</p>
+
+
+<p>
+  <strong>Leaders:</strong><br>
+  <% department.leaders.each do |leader| %>
+    <%= leader.member_name %> <%= leader.leader_type %><br>
+  <% end %>
+</p>
+

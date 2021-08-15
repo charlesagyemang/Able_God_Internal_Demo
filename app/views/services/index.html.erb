@@ -10,7 +10,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Department</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Service</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -58,9 +58,114 @@
         <td><%= service.starting_time.to_s.split(" ")[1] %></td>
         <td><%= service.closing_time.to_s.split(" ")[1]  %></td>
         <td>
-          MC: <%= service.line_up_count[:mc] %>  <%= link_to 'Edit MC', edit_lineup_path(service.lineup), class: "btn btn-sm btn-outline-info" %><br><br>
-          Activities: <%= service.line_up_count[:size] %> <%= link_to 'View Activities', lineup_path(service.lineup), class: "btn btn-sm btn-outline-info" %><br><br>
-          <%= link_to 'Add Activities', new_programme_path(:lineup => service.lineup ), class: "btn btn-outline-success" %><br><br>
+          MC: <%= service.line_up_count[:mc] %> 
+
+           <div class="modal fade" id="edit_lineup_<%=service.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add Activity (<%= service.id %>)</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                  <%= form_with(model: service.lineup) do |form| %>
+                    <% if service.lineup.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(service.lineup.errors.count, "error") %> prohibited this lineup from being saved:</h2>
+                        <ul>
+                          <% service.lineup.errors.each do |error| %>
+                            <li><%= error.full_message %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+
+                    <div class="field">
+                      <%= form.label :name_of_mc %>
+                      <%= form.text_field :mc, class: "form-control" %>
+                    </div>
+
+                    <div class="actions">
+                      <%= form.submit "Update MC", class: "btn btn-primary" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-sm  btn-outline-secondary" data-toggle="modal" data-target="#edit_lineup_<%=service.id%>">
+            Edit MC
+          </button>
+
+          
+          <br><br>
+          Activities: <%= service.line_up_count[:size] %> 
+
+          <div class="modal fade" id="add_leader_<%=service.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add Activity (<%= service.id %>)</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                  <%= form_with(model: @programme) do |form| %>
+                    <% if @programme.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(@programme.errors.count, "error") %> prohibited this programme from being saved:</h2>
+
+                        <ul>
+                          <% @programme.errors.each do |error| %>
+                            <li><%= error.full_message %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+
+                    <div class="field invisible">
+                      <%= collection_select(:programme, :lineup_id, Lineup.all.includes(:service), :id, :type_with_date, { selected: service.lineup.id}) %>
+                    </div>
+
+                    <div class="field">
+                      <%= form.label :name %>
+                      <%= form.text_field :name, class: "form-control" %>
+                    </div>
+
+                    <div class="field">
+                      <%= form.label :facilitator %>
+                      <%= form.text_field :facilitator, class: "form-control" %>
+                    </div>
+
+                    <div class="field">
+                      <%= form.label :time_allocation_in_minutes %>
+                      <%= form.text_field :time_allocation_in_minutes, class: "form-control" %>
+                    </div>
+
+                    <div class="actions">
+                      <%= form.submit "Submit", class: "btn btn-primary" %>
+                    </div>
+                  <% end %>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-sm  btn-outline-success" data-toggle="modal" data-target="#add_leader_<%=service.id%>">
+            Add
+          </button>
+        
+
         </td>
 
         <td>

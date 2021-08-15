@@ -17,9 +17,7 @@
       <div class="modal-body">
         <%= render 'form', department: @department %>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+     
     </div>
   </div>
 </div>
@@ -61,11 +59,111 @@
 
           <td>
             Leaders: <%= department.leaders.length %><br>
-            <%= link_to 'Add Leader', new_leader_path(:department_id => department.id), class: "btn btn-sm btn-outline-success" %>
+            <div class="modal fade" id="add_leader_<%=department.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Department (<%= department.id %>) Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <%= form_with(model: @leader) do |form| %>
+                      <% if @leader.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@leader.errors.count, "error") %> prohibited this leader from being saved:</h2>
+
+                          <ul>
+                            <% @leader.errors.each do |error| %>
+                              <li><%= error.full_message %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                      <% end %>
+
+                      <div class="field">
+                        <%= form.label :select_leader %>
+                        <%= collection_select(:leader, :member_id, Member.all, :id, :name, {}, class: "form-control") %>
+                      </div>
+
+                      <div class="field invisible">
+                        <%= form.label :department_id %>
+                        <%= collection_select(:leader, :department_id, Department.all, :id, :name, { selected: department.id}) %>
+                      </div>
+
+                      <div class="field">
+                        <%= form.label :select_position %>
+                        <%= form.select(:leader_type, options_for_select(["HEAD", "ASSISTANT", "SECRETARY", "TREASURER"]), {}, {class: "form-control"} ) %>
+                      </div>
+
+                      <div class="actions">
+                        <%= form.submit "Submit" , class: "btn btn-primary"%>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#add_leader_<%=department.id%>">
+              Add Leader
+            </button>
           </td>
 
-          <td><%= link_to 'Show', department, class: "btn btn-outline-success" %></td>
-          <td><%= link_to 'Edit', edit_department_path(department), class: "btn btn-outline-info" %></td>
+          
+
+
+          <td>
+            <div class="modal fade" id="show_<%=department.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Department (<%= department.id %>) Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <%= render partial: 'show', :locals => {department: department}  %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show_<%=department.id%>">
+            View
+          </button>
+        </td>
+
+        <td>
+
+          <div class="modal fade" id="edit_<%=department.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Department (<%= department.id %>)</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                   <%= render 'form', department: department  %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit_<%=department.id%>">
+            Edit
+          </button>
+        </td>
           <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-outline-danger"%></td>
         </tr>
       <% end %>
