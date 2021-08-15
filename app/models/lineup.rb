@@ -3,6 +3,7 @@ class Lineup < ApplicationRecord
     has_many :programme
 
     def type_with_date
-        "#{service.service_type}[#{service.date}] - PLU"
+        leader = Leader.includes(:member).find(service.leader_id)
+        "#{service.service_type}[#{service.date}]#{leader.member.name} - PLU"
     end
 end
