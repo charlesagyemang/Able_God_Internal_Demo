@@ -9,10 +9,9 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">DOB</th>
       <th scope="col">Phone</th>
       <th scope="col">Whatsapp</th>
+      <th scope="col">DOB</th>
 
       <th scope="col">Show</th>
       <th scope="col">Edit</th>
@@ -24,10 +23,10 @@
     <% @members.each do |member| %>
       <tr>
         <th scope="row"><%= member.name %></td>
-        <td><%= member.email %></td>
-        <td><%= member.birthday %></td>
+      
         <td><%= member.phone_number %></td>
         <td><%= member.phone_number_two %></td>
+        <td><%= member.birthday %></td>
 
         <td><%= link_to 'Show', member, class: "btn btn-outline-success"%></td>
         <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-outline-info" %></td>
