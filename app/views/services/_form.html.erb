@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :department_id %>
-    <%= collection_select(:service, :leader_id, Leader.all.includes(:department), :id, :department_leader, {}) %>
+    <%= collection_select(:service, :leader_id, Leader.where(:leader_type => "HEAD").includes(:department), :id, :department_leader, {}) %>
   </div>
 
   <div class="field">
