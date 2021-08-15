@@ -26,11 +26,11 @@ class DepartmentsController < ApplicationController
 
     respond_to do |format|
       if @department.save
-        format.html { redirect_to @department, notice: "Department was successfully created." }
+        format.html { redirect_to departments_url, notice: "Department was successfully created." }
         format.json { render :show, status: :created, location: @department }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @department.errors, status: :unprocessable_entity }
+        format.json { render json: departments_url.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,11 +39,11 @@ class DepartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @department.update(department_params)
-        format.html { redirect_to @department, notice: "Department was successfully updated." }
+        format.html { redirect_to departments_url, notice: "Department was successfully updated." }
         format.json { render :show, status: :ok, location: @department }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @department.errors, status: :unprocessable_entity }
+        format.json { render json: departments_url.errors, status: :unprocessable_entity }
       end
     end
   end

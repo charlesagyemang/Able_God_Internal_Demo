@@ -26,7 +26,7 @@ class LeadersController < ApplicationController
 
     respond_to do |format|
       if @leader.save
-        format.html { redirect_to @leader, notice: "Leader was successfully created." }
+        format.html { redirect_to leaders_url, notice: "Leader was successfully created." }
         format.json { render :show, status: :created, location: @leader }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class LeadersController < ApplicationController
   def update
     respond_to do |format|
       if @leader.update(leader_params)
-        format.html { redirect_to @leader, notice: "Leader was successfully updated." }
+        format.html { redirect_to leaders_url, notice: "Leader was successfully updated." }
         format.json { render :show, status: :ok, location: @leader }
       else
         format.html { render :edit, status: :unprocessable_entity }

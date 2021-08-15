@@ -25,7 +25,7 @@ class LineupsController < ApplicationController
 
     respond_to do |format|
       if @lineup.save
-        format.html { redirect_to @lineup, notice: "Lineup was successfully created." }
+        format.html { redirect_to lineups_url, notice: "Lineup was successfully created." }
         format.json { render :show, status: :created, location: @lineup }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class LineupsController < ApplicationController
   def update
     respond_to do |format|
       if @lineup.update(lineup_params)
-        format.html { redirect_to @lineup, notice: "Lineup was successfully updated." }
+        format.html { redirect_to lineups_url, notice: "Lineup was successfully updated." }
         format.json { render :show, status: :ok, location: @lineup }
       else
         format.html { render :edit, status: :unprocessable_entity }
