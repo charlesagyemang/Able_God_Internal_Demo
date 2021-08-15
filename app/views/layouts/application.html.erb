@@ -40,15 +40,11 @@
 
   </head>
 
-  <body id="page-top"> 
-    <div class="wrapper">
-      <% if request.env['REQUEST_URI'] != "/users/sign_in" %>
-        <%= render  partial: "shared/navbar" %>
-      <% end%>
-      <div id="content-wrapper" class="d-flex flex-column">
-        <%= yield %>
-      </div>
-    </div>
+  <body> 
+    <% if request.env['REQUEST_URI'] != "/users/sign_in" %>
+      <%= render  partial: "shared/navbar" %>
+    <% end%>
+    <%= yield %>
   </body>
   <footer>
     <%= yield :page_scripts %>
