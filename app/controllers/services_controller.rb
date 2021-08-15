@@ -25,7 +25,9 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to services_url, notice: "Service was successfully created." }
+        #create line_up
+        @lineup = Lineup.create(service: @service, mc: "MC")
+        format.html { redirect_to services_url, notice: "Service was successfully created. #{@lineup.id}" }
         format.json { render :show, status: :created, location: @service }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,5 +68,9 @@ class ServicesController < ApplicationController
     def service_params
       params.require(:service).permit(:service_type, :date, :male_attendance, :female_attendance, 
         :number_of_new_comers, :offertory_amount, :tithe_amount, :starting_time, :closing_time, :leader_id)
+    end
+
+    def lineup_params 
+      params.require(:lineup).permit(:service_id, :mc)
     end
 end

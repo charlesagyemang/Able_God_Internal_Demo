@@ -25,7 +25,7 @@ class ProgrammesController < ApplicationController
 
     respond_to do |format|
       if @programme.save
-        format.html { redirect_to programmes_url, notice: "Programme was successfully created." }
+        format.html { redirect_to services_url, notice: "Programme was successfully created." }
         format.json { render :show, status: :created, location: @programme }
       else
         format.html { render :new, status: :unprocessable_entity }

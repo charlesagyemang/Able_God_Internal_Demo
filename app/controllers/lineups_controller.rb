@@ -38,7 +38,7 @@ class LineupsController < ApplicationController
   def update
     respond_to do |format|
       if @lineup.update(lineup_params)
-        format.html { redirect_to lineups_url, notice: "Lineup was successfully updated." }
+        format.html { redirect_to services_url, notice: "Lineup was successfully updated." }
         format.json { render :show, status: :ok, location: @lineup }
       else
         format.html { render :edit, status: :unprocessable_entity }
