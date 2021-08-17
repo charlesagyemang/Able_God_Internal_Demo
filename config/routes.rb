@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :outreach_reports
+  resources :leadership_reports
   get 'messages/index'
   resources :programmes
   resources :lineups

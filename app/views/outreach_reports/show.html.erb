@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number of people visited:</strong>
+  <%= @outreach_report.number_of_people_visited %>
+</p>
+
+<p>
+  <strong>Number of people preached to:</strong>
+  <%= @outreach_report.number_of_people_preached_to %>
+</p>
+
+<p>
+  <strong>Number of people prayed for:</strong>
+  <%= @outreach_report.number_of_people_prayed_for %>
+</p>
+
+<p>
+  <strong>Number of days fasted:</strong>
+  <%= @outreach_report.number_of_days_fasted %>
+</p>
+
+<p>
+  <strong>Week summary:</strong>
+  <%= @outreach_report.week_summary %>
+</p>
+
+<%= link_to 'Edit', edit_outreach_report_path(@outreach_report) %> |
+<%= link_to 'Back', outreach_reports_path %>

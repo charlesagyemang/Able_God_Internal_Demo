@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Leadership Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>References</th>
+      <th>How many minutes prayed</th>
+      <th>How many chapters read</th>
+      <th>How many messages soaked</th>
+      <th>How many times fasted in a week</th>
+      <th>Current book you are reading</th>
+      <th>Summary</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leadership_reports.each do |leadership_report| %>
+      <tr>
+        <td><%= leadership_report.references %></td>
+        <td><%= leadership_report.how_many_minutes_prayed %></td>
+        <td><%= leadership_report.how_many_chapters_read %></td>
+        <td><%= leadership_report.how_many_messages_soaked %></td>
+        <td><%= leadership_report.how_many_times_fasted_in_a_week %></td>
+        <td><%= leadership_report.current_book_you_are_reading %></td>
+        <td><%= leadership_report.summary %></td>
+        <td><%= link_to 'Show', leadership_report %></td>
+        <td><%= link_to 'Edit', edit_leadership_report_path(leadership_report) %></td>
+        <td><%= link_to 'Destroy', leadership_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Leadership Report', new_leadership_report_path %>

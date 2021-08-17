@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Outreach Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number of people visited</th>
+      <th>Number of people preached to</th>
+      <th>Number of people prayed for</th>
+      <th>Number of days fasted</th>
+      <th>Week summary</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @outreach_reports.each do |outreach_report| %>
+      <tr>
+        <td><%= outreach_report.number_of_people_visited %></td>
+        <td><%= outreach_report.number_of_people_preached_to %></td>
+        <td><%= outreach_report.number_of_people_prayed_for %></td>
+        <td><%= outreach_report.number_of_days_fasted %></td>
+        <td><%= outreach_report.week_summary %></td>
+        <td><%= link_to 'Show', outreach_report %></td>
+        <td><%= link_to 'Edit', edit_outreach_report_path(outreach_report) %></td>
+        <td><%= link_to 'Destroy', outreach_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Outreach Report', new_outreach_report_path %>

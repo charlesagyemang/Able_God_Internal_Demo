@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  how_many_minutes_prayed: 1
+  how_many_chapters_read: 1
+  how_many_messages_soaked: 1
+  how_many_times_fasted_in_a_week: 1
+  current_book_you_are_reading: MyText
+  summary: MyText
+
+two:
+  references: 
+  how_many_minutes_prayed: 1
+  how_many_chapters_read: 1
+  how_many_messages_soaked: 1
+  how_many_times_fasted_in_a_week: 1
+  current_book_you_are_reading: MyText
+  summary: MyText

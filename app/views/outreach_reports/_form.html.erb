@@ -1,0 +1,42 @@
+<%= form_with(model: outreach_report) do |form| %>
+  <% if outreach_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(outreach_report.errors.count, "error") %> prohibited this outreach_report from being saved:</h2>
+
+      <ul>
+        <% outreach_report.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number_of_people_visited %>
+    <%= form.text_field :number_of_people_visited %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_of_people_preached_to %>
+    <%= form.text_field :number_of_people_preached_to %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_of_people_prayed_for %>
+    <%= form.text_field :number_of_people_prayed_for %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_of_days_fasted %>
+    <%= form.text_field :number_of_days_fasted %>
+  </div>
+
+  <div class="field">
+    <%= form.label :week_summary %>
+    <%= form.text_area :week_summary %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

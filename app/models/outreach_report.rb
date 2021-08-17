@@ -1,0 +1,2 @@
+class OutreachReport < ApplicationRecord
+end

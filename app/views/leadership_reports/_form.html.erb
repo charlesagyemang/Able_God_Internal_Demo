@@ -1,0 +1,52 @@
+<%= form_with(model: leadership_report) do |form| %>
+  <% if leadership_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(leadership_report.errors.count, "error") %> prohibited this leadership_report from being saved:</h2>
+
+      <ul>
+        <% leadership_report.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :references %>
+    <%= form.text_field :references %>
+  </div>
+
+  <div class="field">
+    <%= form.label :how_many_minutes_prayed %>
+    <%= form.number_field :how_many_minutes_prayed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :how_many_chapters_read %>
+    <%= form.number_field :how_many_chapters_read %>
+  </div>
+
+  <div class="field">
+    <%= form.label :how_many_messages_soaked %>
+    <%= form.number_field :how_many_messages_soaked %>
+  </div>
+
+  <div class="field">
+    <%= form.label :how_many_times_fasted_in_a_week %>
+    <%= form.number_field :how_many_times_fasted_in_a_week %>
+  </div>
+
+  <div class="field">
+    <%= form.label :current_book_you_are_reading %>
+    <%= form.text_area :current_book_you_are_reading %>
+  </div>
+
+  <div class="field">
+    <%= form.label :summary %>
+    <%= form.text_area :summary %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

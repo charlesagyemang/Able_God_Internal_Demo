@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>References:</strong>
+  <%= @leadership_report.references %>
+</p>
+
+<p>
+  <strong>How many minutes prayed:</strong>
+  <%= @leadership_report.how_many_minutes_prayed %>
+</p>
+
+<p>
+  <strong>How many chapters read:</strong>
+  <%= @leadership_report.how_many_chapters_read %>
+</p>
+
+<p>
+  <strong>How many messages soaked:</strong>
+  <%= @leadership_report.how_many_messages_soaked %>
+</p>
+
+<p>
+  <strong>How many times fasted in a week:</strong>
+  <%= @leadership_report.how_many_times_fasted_in_a_week %>
+</p>
+
+<p>
+  <strong>Current book you are reading:</strong>
+  <%= @leadership_report.current_book_you_are_reading %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @leadership_report.summary %>
+</p>
+
+<%= link_to 'Edit', edit_leadership_report_path(@leadership_report) %> |
+<%= link_to 'Back', leadership_reports_path %>

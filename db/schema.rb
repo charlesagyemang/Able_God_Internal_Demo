@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_171902) do
+ActiveRecord::Schema.define(version: 2021_08_17_124446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(version: 2021_08_11_171902) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_leaders_on_department_id"
     t.index ["member_id"], name: "index_leaders_on_member_id"
+  end
+
+  create_table "leadership_reports", force: :cascade do |t|
+    t.bigint "leader_id", null: false
+    t.integer "how_many_minutes_prayed"
+    t.integer "how_many_chapters_read"
+    t.integer "how_many_messages_soaked"
+    t.integer "how_many_times_fasted_in_a_week"
+    t.text "current_book_you_are_reading"
+    t.text "summary"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["leader_id"], name: "index_leadership_reports_on_leader_id"
   end
 
   create_table "lineups", force: :cascade do |t|
@@ -64,6 +77,19 @@ ActiveRecord::Schema.define(version: 2021_08_11_171902) do
     t.string "occupation"
     t.string "year_joined"
     t.string "whatsapp"
+    t.string "membership_type"
+  end
+
+  create_table "outreach_reports", force: :cascade do |t|
+    t.integer "number_of_people_visited"
+    t.integer "number_of_people_preached_to"
+    t.integer "number_of_people_prayed_for"
+    t.integer "number_of_days_fasted"
+    t.text "week_summary"
+    t.bigint "leader_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["leader_id"], name: "index_outreach_reports_on_leader_id"
   end
 
   create_table "programmes", force: :cascade do |t|
@@ -106,7 +132,9 @@ ActiveRecord::Schema.define(version: 2021_08_11_171902) do
 
   add_foreign_key "leaders", "departments"
   add_foreign_key "leaders", "members"
+  add_foreign_key "leadership_reports", "leaders"
   add_foreign_key "lineups", "services"
+  add_foreign_key "outreach_reports", "leaders"
   add_foreign_key "programmes", "lineups"
   add_foreign_key "services", "leaders"
 end
