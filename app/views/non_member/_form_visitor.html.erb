@@ -1,0 +1,89 @@
+<%= form_with(model: member) do |form| %>
+ <div class="container">
+
+  <% if member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+        <% member.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="row">
+    <div class="col-sm">
+      <div class="form-group">
+        <%= form.label :full_name, class: "col-md-4 control-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm">
+        <div class="form-group">
+          <%= form.label :birthday %><br />
+          <%= form.date_select :birthday,  start_year: Date.today.year - 80,  end_year: Date.today.year, class: "form-control" %>
+        </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+        <div class="form-group">
+          <%= form.label :phone_number %>
+          <%= form.text_field :phone_number, class: "form-control" %>
+        </div>
+    </div>
+
+     <div class="col-sm">
+       <div class="form-group">
+          <%= form.label :whatsaap_number %>
+          <%= form.text_field :phone_number_two, class: "form-control" %>
+        </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="row">
+     
+    <div class="col-sm">
+       <div class="form-group">
+        <%= form.label :occupation %>
+        <%= form.text_field :occupation, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class=" invisible col-sm">
+       <div class="form-group">
+        <%= form.label :membership_type %>
+        <%= form.select(:membership_type, options_for_select(["VISITOR"]))%>
+      </div>
+    </div>
+
+  </div>
+
+    <div class="invisible">  
+      <div class="form-group">
+        <%= form.label :email, class: "col-md-4 control-label"  %>
+        <%= form.text_field :email, class: "form-control" %>
+    </div>
+    </div>
+
+  <div class="row">
+    <div class="col-sm">
+        <div class="actions">
+          <%= form.submit "SUBMIT", class: "btn btn-primary btn-lg"%>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<% end %>

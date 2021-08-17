@@ -84,7 +84,7 @@
 
                       <div class="field">
                         <%= form.label :select_leader %>
-                        <%= collection_select(:leader, :member_id, Member.all, :id, :name, {}, class: "form-control") %>
+                        <%= collection_select(:leader, :member_id, Member.where("membership_type is null OR membership_type='FULL_MEMBER'"), :id, :name, {}, class: "form-control") %>
                       </div>
 
                       <div class="field invisible">

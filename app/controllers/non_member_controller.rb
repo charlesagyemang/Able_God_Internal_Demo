@@ -1,11 +1,11 @@
-class MembersController < ApplicationController
+class NonMemberController < ApplicationController
   before_action :set_member, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
   # GET /members or /members.json
   def index
-    @members = Member.where("membership_type is null OR membership_type='FULL_MEMBER'")
-    @member  = Member.new
+    @members = Member.where("membership_type='NEW_SOUL' OR membership_type='VISITOR' ")
+    @non_member  = Member.new
   end
 
   # GET /members/1 or /members/1.json
@@ -27,13 +27,8 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        if @member.membership_type == "VISITOR" || @member.membership_type == "NEW_SOUL"
-          format.html { redirect_to non_member_index_path, notice: "Member was successfully created." }
-          format.json { render :show, status: :created, location: @member }
-        else
-          format.html { redirect_to members_url, notice: "Member was successfully created." }
-          format.json { render :show, status: :created, location: @member }
-        end
+        format.html { redirect_to non_member_url, notice: "Member was successfully created." }
+        format.json { render :show, status: :created, location: @member }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @member.errors, status: :unprocessable_entity }
@@ -45,13 +40,8 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
-        if @member.membership_type == "VISITOR" || @member.membership_type == "NEW_SOUL"
-          format.html { redirect_to non_member_index_path, notice: "Member was successfully updated." }
-          format.json { render :show, status: :ok, location: @member }
-        else
-          format.html { redirect_to members_url, notice: "Member was successfully updated." }
-          format.json { render :show, status: :ok, location: @member }
-        end
+        format.html { redirect_to non_member_url, notice: "Member was successfully updated." }
+        format.json { render :show, status: :ok, location: @member }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @member.errors, status: :unprocessable_entity }
@@ -63,13 +53,8 @@ class MembersController < ApplicationController
   def destroy
     @member.destroy
     respond_to do |format|
-      if @member.membership_type == "VISITOR" || @member.membership_type == "NEW_SOUL"
-        format.html { redirect_to non_member_index_path, notice: "Member was successfully destroyed." }
-        format.json { head :no_content }
-      else 
-        format.html { redirect_to members_url, notice: "Member was successfully destroyed." }
-        format.json { head :no_content }
-      end 
+      format.html { redirect_to non_member_url, notice: "Member was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 

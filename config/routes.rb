@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get 'non_member/index'
+  resources :non_member
   resources :outreach_reports
   resources :leadership_reports
   get 'messages/index'

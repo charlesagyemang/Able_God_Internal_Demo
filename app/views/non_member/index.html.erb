@@ -1,7 +1,7 @@
 <div class="container-fluid">
 <p id="notice"><%= notice %></p>
 
-<h1>Members</h1>
+<h1>Non Members</h1>
 
 
 <!-- Modal -->
@@ -9,16 +9,36 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Department</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add New Visitor</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <%= render 'form', member: @member %>
+        <%= render 'form_visitor', member: @non_member %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="addNewSoulModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Soul</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', member: @non_member %>
+      </div>
+      <div class="modal-footer">
+        
       </div>
     </div>
   </div>
@@ -28,7 +48,11 @@
 
 
  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDepartmentModal">
-  Add New Member
+  Add New Visitor
+</button>
+
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#addNewSoulModal">
+  Add New Soul
 </button>
 <br><br>
 
@@ -38,9 +62,8 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Member Type</th>
       <th scope="col">Phone</th>
-      <th scope="col">Whatsapp</th>
-      <th scope="col">DOB</th>
 
       <th scope="col">Show</th>
       <th scope="col">Edit</th>
@@ -52,17 +75,14 @@
     <% @members.each do |member| %>
       <tr>
         <th scope="row"><%= member.name %></td>
-      
+        <td><%= member.membership_type %></td>
         <td><%= member.phone_number %></td>
-        <td><%= member.phone_number_two %></td>
-        <td><%= member.birthday %></td>
-
         <td>
         <div class="modal fade" id="show_<%= member.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Department</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><%= member.membership_type %> DETAILS</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -87,7 +107,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Department</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit <%= member.membership_type%></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -103,17 +123,17 @@
         </div>
 
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit_<%= member.id%>">
-          Edit
+          Edit <%= member.membership_type%>
         </button>
 
         </td>
 
         <td>
-          <% if current_user.email == "micnkru@gmail.com" %>
-            <%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
-          <% else %>
-            403 Unauthorized
-          <% end %> 
+        <% if current_user.email == "micnkru@gmail.com" %>
+          <%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
+        <% else %>
+          403 Unauthorized
+       <% end %> 
         </td>
       </tr>
     <% end %>

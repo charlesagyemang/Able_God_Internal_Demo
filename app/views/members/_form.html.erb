@@ -128,6 +128,13 @@
 
   </div>
 
+  <div class="invisible">
+      <div class="form-group">
+      <%= form.label :membership_type %>
+      <%= form.select(:membership_type, options_for_select(["FULL_MEMBER"]))%>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-sm">
         <div class="actions">

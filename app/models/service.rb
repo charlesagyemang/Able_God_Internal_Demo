@@ -1,6 +1,7 @@
 class Service < ApplicationRecord
 
     has_one :lineup, dependent: :destroy
+    has_one :department
 
     def type_with_date
         "#{service_type}[#{date}]"
