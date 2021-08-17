@@ -3,7 +3,6 @@
 
 <h1>Leaders</h1>
 
-<%= link_to 'New Leader', new_leader_path, class: "btn btn-outline-primary" %>
 <br><br><br />
 
  <table class="table table-stripped" id="list-table">
@@ -13,17 +12,203 @@
         <th scope="col">Department</th>
         <th scope="col">Position</th>
 
+        <th scope="col">Add Personal  Weekly Report</th>
+        <th scope="col">Add Weekly Outreach Report</th>
+
+
+
         <th scope="col">Shoe</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
-      <% @leaders.includes(:member, :department).each do |leader| %>
+      <% @leaders.includes(:member, :department, :leadership_reports, :outreach_reports).each do |leader| %>
         <tr>
           <td><%= leader.member.name %></td>
           <td><%= leader.department.name %></td>
           <td><%= leader.leader_type %></td>
+
+          <td>
+              <div class="modal fade" id="add_leader_<%= leader.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Add Weekly Report</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <div class="modal-body">
+                          <%= form_with(model: @leadership_report) do |form| %>
+                            <% if @leadership_report.errors.any? %>
+                              <div id="error_explanation">
+                                <h2><%= pluralize(@leadership_report.errors.count, "error") %> prohibited this leadership_report from being saved:</h2>
+
+                                <ul>
+                                  <% @leadership_report.errors.each do |error| %>
+                                    <li><%= error.full_message %></li>
+                                  <% end %>
+                                </ul>
+                              </div>
+                            <% end %>
+
+                            <div class="field invisible">
+                              <%= form.label :leader_id %>
+                              <%= collection_select(:leadership_report, :leader_id, Leader.all, :id, :id, { selected: leader.id}) %>
+                            </div>
+
+                            <div class="form-group">
+                              <%= form.label :period_start %><br />
+                              <%= form.date_select :period_start,  start_year: Date.today.year,  end_year: Date.today.year, class: "form-control" %>
+                            </div>
+
+                            <div class="form-group">
+                              <%= form.label :period_end %><br />
+                              <%= form.date_select :period_end,  start_year: Date.today.year,  end_year: Date.today.year, class: "form-control" %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :how_many_minutes_prayed %>
+                              <%= form.number_field :how_many_minutes_prayed %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :how_many_chapters_read %>
+                              <%= form.number_field :how_many_chapters_read %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :how_many_messages_soaked %>
+                              <%= form.number_field :how_many_messages_soaked %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :how_many_times_fasted_in_a_week %>
+                              <%= form.number_field :how_many_times_fasted_in_a_week %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :current_book_you_are_reading %>
+                              <%= form.text_area :current_book_you_are_reading %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :summary %>
+                              <%= form.text_area :summary %>
+                            </div>
+
+                            <div class="actions">
+                              <%= form.submit %>
+                            </div>
+                          <% end %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              Personal Reports = <%= leader.leadership_reports.length %>
+              <br><br>
+
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add_leader_<%= leader.id%>">
+                Add Weekly Report
+            </button>
+
+          </td>
+
+          <td>
+           
+
+            <div class="modal fade" id="add_outreach_report_<%= leader.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Add Weekly Report</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <div class="modal-body">
+                          <%= form_with(model: @outreach_report) do |form| %>
+                            <% if @outreach_report.errors.any? %>
+                              <div id="error_explanation">
+                                <h2><%= pluralize(@outreach_report.errors.count, "error") %> prohibited this outreach_report from being saved:</h2>
+
+                                <ul>
+                                  <% o@utreach_report.errors.each do |error| %>
+                                    <li><%= error.full_message %></li>
+                                  <% end %>
+                                </ul>
+                              </div>
+                            <% end %>
+
+                            <div class="field invisible">
+                              <%= form.label :leader_id %>
+                              <%= collection_select(:outreach_report, :leader_id, Leader.all, :id, :id, { selected: leader.id}) %>
+                            </div>
+
+                            <div class="form-group">
+                              <%= form.label :period_start %><br />
+                              <%= form.date_select :period_start,  start_year: Date.today.year,  end_year: Date.today.year, class: "form-control" %>
+                            </div>
+
+                            <div class="form-group">
+                              <%= form.label :period_end %><br />
+                              <%= form.date_select :period_end,  start_year: Date.today.year,  end_year: Date.today.year, class: "form-control" %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :number_of_people_visited %>
+                              <%= form.text_field :number_of_people_visited %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :number_of_people_preached_to %>
+                              <%= form.text_field :number_of_people_preached_to %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :number_of_people_prayed_for %>
+                              <%= form.text_field :number_of_people_prayed_for %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :number_of_days_fasted %>
+                              <%= form.text_field :number_of_days_fasted %>
+                            </div>
+
+                            <div class="field">
+                              <%= form.label :week_summary %>
+                              <%= form.text_area :week_summary %>
+                            </div>
+
+                            <div class="actions">
+                              <%= form.submit %>
+                            </div>
+                          <% end %>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              Outreach Reports = <%= leader.outreach_reports.length %>
+              <br><br>
+
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#add_outreach_report_<%= leader.id%>">
+                Add Weekly Outreach Report
+            </button>
+
+          </td>
+
           <td><%= link_to 'Show', leader, class: "btn btn-outline-success" %></td>
           <td><%= link_to 'Edit', edit_leader_path(leader), class: "btn btn-outline-info" %></td>
           <td><%= link_to 'Destroy', leader, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>

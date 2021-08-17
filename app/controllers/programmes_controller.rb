@@ -38,7 +38,7 @@ class ProgrammesController < ApplicationController
   def update
     respond_to do |format|
       if @programme.update(programme_params)
-        format.html { redirect_to programmes_url, notice: "Programme was successfully updated." }
+        format.html { redirect_to services_url, notice: "Programme was successfully updated." }
         format.json { render :show, status: :ok, location: @programme }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class ProgrammesController < ApplicationController
   def destroy
     @programme.destroy
     respond_to do |format|
-      format.html { redirect_to programmes_url, notice: "Programme was successfully destroyed." }
+      format.html { redirect_to services_url, notice: "Programme was successfully destroyed." }
       format.json { head :no_content }
     end
   end

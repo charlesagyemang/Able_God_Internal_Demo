@@ -25,7 +25,7 @@ class LeadershipReportsController < ApplicationController
 
     respond_to do |format|
       if @leadership_report.save
-        format.html { redirect_to @leadership_report, notice: "Leadership report was successfully created." }
+        format.html { redirect_to leaders_url, notice: "Leadership report was successfully created." }
         format.json { render :show, status: :created, location: @leadership_report }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class LeadershipReportsController < ApplicationController
   def update
     respond_to do |format|
       if @leadership_report.update(leadership_report_params)
-        format.html { redirect_to @leadership_report, notice: "Leadership report was successfully updated." }
+        format.html { redirect_to leaders_url, notice: "Leadership report was successfully updated." }
         format.json { render :show, status: :ok, location: @leadership_report }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class LeadershipReportsController < ApplicationController
   def destroy
     @leadership_report.destroy
     respond_to do |format|
-      format.html { redirect_to leadership_reports_url, notice: "Leadership report was successfully destroyed." }
+      format.html { redirect_to leaders_url, notice: "Leadership report was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -64,6 +64,10 @@ class LeadershipReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def leadership_report_params
-      params.require(:leadership_report).permit(:references, :how_many_minutes_prayed, :how_many_chapters_read, :how_many_messages_soaked, :how_many_times_fasted_in_a_week, :current_book_you_are_reading, :summary)
+      params.require(:leadership_report).permit(
+        :leader_id, :how_many_minutes_prayed, :how_many_chapters_read, 
+        :how_many_messages_soaked, :how_many_times_fasted_in_a_week, 
+        :current_book_you_are_reading, :summary, :period_start, :period_end
+      )
     end
 end

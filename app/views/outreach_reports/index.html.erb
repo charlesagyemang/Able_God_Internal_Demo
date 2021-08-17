@@ -9,6 +9,10 @@
       <th>Number of people preached to</th>
       <th>Number of people prayed for</th>
       <th>Number of days fasted</th>
+
+      <th>Period Start</th>
+      <th>Period End</th>
+
       <th>Week summary</th>
       <th colspan="3"></th>
     </tr>
@@ -21,6 +25,11 @@
         <td><%= outreach_report.number_of_people_preached_to %></td>
         <td><%= outreach_report.number_of_people_prayed_for %></td>
         <td><%= outreach_report.number_of_days_fasted %></td>
+
+        <td><%= outreach_report.period_start %></td>
+        <td><%= outreach_report.period_end %></td>
+
+
         <td><%= outreach_report.week_summary %></td>
         <td><%= link_to 'Show', outreach_report %></td>
         <td><%= link_to 'Edit', edit_outreach_report_path(outreach_report) %></td>

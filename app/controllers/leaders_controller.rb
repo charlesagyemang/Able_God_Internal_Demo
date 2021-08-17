@@ -5,6 +5,8 @@ class LeadersController < ApplicationController
   # GET /leaders or /leaders.json
   def index
     @leaders = Leader.all
+    @leadership_report = LeadershipReport.new
+    @outreach_report = OutreachReport.new
   end
 
   # GET /leaders/1 or /leaders/1.json
@@ -60,7 +62,7 @@ class LeadersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_leader
-      @leader = Leader.find(params[:id])
+      @leader = Leader.includes(:member, :department, :leadership_reports, :outreach_reports).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

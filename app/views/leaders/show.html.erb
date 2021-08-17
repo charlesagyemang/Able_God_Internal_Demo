@@ -1,19 +1,45 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Member:</strong>
-  <%= @leader.member_id %>
+  <strong>Leader Name:</strong>
+  <%= @leader.member.name %>
 </p>
 
 <p>
-  <strong>Department:</strong>
-  <%= @leader.department_id %>
+  <strong>Position:</strong>
+  <%= @leader.department.name %> -   <%= @leader.leader_type %>
 </p>
 
 <p>
-  <strong>Leader type:</strong>
-  <%= @leader.leader_type %>
+  <strong><%= @leader.leadership_reports.length %> Reports:</strong>
+  <br><br>
+  <% @leader.leadership_reports.each do |report|%>
+    Period: <%= report.period_start%> - <%= report.period_end%><br>
+    Chapters Read: <%= report.how_many_chapters_read %><br>
+    Messages Soaked: <%= report.how_many_messages_soaked %><br>
+    Minutes Prayed: <%= report.how_many_minutes_prayed %><br>
+    <br><br>
+  <% end %>
 </p>
+
+
+
+<p>
+  <strong><%= @leader.outreach_reports.length %> Outreach Reports:</strong>
+  <br><br>
+  <% @leader.outreach_reports.each do |outreach_report|%>
+        Prople Visited: <%= outreach_report.number_of_people_visited %><br>
+        Number Of People Preached To:  <%= outreach_report.number_of_people_preached_to %><br>
+        Number Of People Prayed For: <%= outreach_report.number_of_people_prayed_for %><br>
+        Number Of Days Fasted In The Week:  <%= outreach_report.number_of_days_fasted %><br>
+        Period Start: <%= outreach_report.period_start %><br>
+        Period End: <%= outreach_report.period_end %><br>
+
+    <br><br>
+  <% end %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_leader_path(@leader) %> |
 <%= link_to 'Back', leaders_path %>

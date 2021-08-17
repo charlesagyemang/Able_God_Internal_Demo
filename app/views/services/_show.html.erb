@@ -45,3 +45,18 @@
   <%= service.closing_time %>
 </p>
 
+
+<p>
+  <strong>MC:</strong>
+  <%= service.lineup.mc %>
+</p>
+
+
+<p>
+  <strong>PLU:</strong><br>
+  <% service.lineup.programme.each do |activity| %>
+    <%= activity.name %> <%= activity.facilitator %> <%= activity.time_allocation_in_minutes %>  
+    <%= link_to 'Delete', activity, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
+    <br>
+  <% end %>
+</p>

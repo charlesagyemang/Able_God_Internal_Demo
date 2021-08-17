@@ -12,6 +12,21 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :leader_id %>
+    <%= collection_select(:outreach_report, :leader_id, Leader.all, :id, :id, { selected: params[:leader]}) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :period_start %><br />
+    <%= form.date_select :period_start,  start_year: Date.today.year,  end_year: Date.today.year, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :period_end %><br />
+    <%= form.date_select :period_end,  start_year: Date.today.year,  end_year: Date.today.year, class: "form-control" %>
+  </div>
+
+  <div class="field">
     <%= form.label :number_of_people_visited %>
     <%= form.text_field :number_of_people_visited %>
   </div>

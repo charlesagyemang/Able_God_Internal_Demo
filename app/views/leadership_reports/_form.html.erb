@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :references %>
-    <%= form.text_field :references %>
-  </div>
+   <div class="field">
+      <%= form.label :leader_id %>
+      <%= collection_select(:leadership_report, :leader_id, Leader.all, :id, :id, { selected: params[:leader]}) %>
+    </div>
 
   <div class="field">
     <%= form.label :how_many_minutes_prayed %>

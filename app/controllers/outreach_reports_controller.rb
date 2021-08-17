@@ -25,7 +25,7 @@ class OutreachReportsController < ApplicationController
 
     respond_to do |format|
       if @outreach_report.save
-        format.html { redirect_to @outreach_report, notice: "Outreach report was successfully created." }
+        format.html { redirect_to leaders_path, notice: "Outreach report was successfully created." }
         format.json { render :show, status: :created, location: @outreach_report }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class OutreachReportsController < ApplicationController
   def update
     respond_to do |format|
       if @outreach_report.update(outreach_report_params)
-        format.html { redirect_to @outreach_report, notice: "Outreach report was successfully updated." }
+        format.html { redirect_to leaders_path, notice: "Outreach report was successfully updated." }
         format.json { render :show, status: :ok, location: @outreach_report }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class OutreachReportsController < ApplicationController
   def destroy
     @outreach_report.destroy
     respond_to do |format|
-      format.html { redirect_to outreach_reports_url, notice: "Outreach report was successfully destroyed." }
+      format.html { redirect_to leaders_path, notice: "Outreach report was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -64,6 +64,10 @@ class OutreachReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def outreach_report_params
-      params.require(:outreach_report).permit(:number_of_people_visited, :number_of_people_preached_to, :number_of_people_prayed_for, :number_of_days_fasted, :week_summary)
+      params.require(:outreach_report).permit(
+        :number_of_people_visited, :number_of_people_preached_to, 
+        :number_of_people_prayed_for, :number_of_days_fasted, 
+        :week_summary, :period_start, :period_end, :leader_id
+      )
     end
 end
