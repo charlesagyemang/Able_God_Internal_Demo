@@ -63,7 +63,7 @@
     <div class=" invisible col-sm">
        <div class="form-group">
         <%= form.label :membership_type %>
-        <%= form.select(:membership_type, options_for_select(["VISITOR"]))%>
+        <%= form.select(:membership_type, options_for_select(["VISITOR", "NEW_SOUL"], :selected => form.object.membership_type))%>
       </div>
     </div>
 
