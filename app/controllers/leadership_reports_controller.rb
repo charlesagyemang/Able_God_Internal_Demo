@@ -3,7 +3,7 @@ class LeadershipReportsController < ApplicationController
 
   # GET /leadership_reports or /leadership_reports.json
   def index
-    @leadership_reports = LeadershipReport.all.order("updated_at DESC")
+    @leadership_reports = LeadershipReport.all
   end
 
   # GET /leadership_reports/1 or /leadership_reports/1.json
