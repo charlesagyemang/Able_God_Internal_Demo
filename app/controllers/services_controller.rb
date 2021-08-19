@@ -3,7 +3,7 @@ class ServicesController < ApplicationController
 
   # GET /services or /services.json
   def index
-    @services = Service.unscoped.order('created_at DESC')
+    @services = Service.order(date: :desc)
     @service = Service.new
     @programme = Programme.new
   end
