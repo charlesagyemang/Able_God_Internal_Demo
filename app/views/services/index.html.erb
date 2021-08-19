@@ -179,7 +179,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                   <%= render partial: 'show', :locals => {service: service}  %>
+                   <%= render partial: 'showtwo', :locals => {service: service}  %>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -232,12 +232,13 @@
   <script>
 
     function readyy(){
+
        $("#list-table").DataTable({
         dom: 'Bfrtip',
-        pageLength: 5,
+        pageLength: 2,
        })
-    }
 
+    }
     $(document).ready(readyy)
     $(document).on('page:load', readyy)
    

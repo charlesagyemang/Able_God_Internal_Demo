@@ -1,26 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Service Details</strong><br>
-  Type: <%= @lineup.service.service_type %> SERVICE [<%= @lineup.service.date %>]<br>
-  Starting Time: <%= @lineup.service.starting_time.to_s.split(" ")[1] %><br>
-  Ending Time:  <%= @lineup.service.closing_time.to_s.split(" ")[1] %><br>
-</p>
 
-<p>
-  <strong>Mc</strong>
-  <%= @lineup.mc %>
-</p>
+<div class="container" >
 
-<p>
-  <strong>Programme Line Up</strong><br>
-  <%@lineup.programme.each do |prog| %>
-    <%= prog.name %>
-    <%= prog.time_allocation_in_minutes %> Minutes
-    <%= prog.facilitator %>
-    <br>
-  <% end %>
-</p>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <span class="text-uppercase" style="color: #9b5de5">PROGRAMME LINE UP </span>
+            <h2 class="text-capitalize font-weight-bold"><%= @lineup.service.service_type %> SERVICE [<%= @lineup.service.date %>]</h2>
+            <h4 class="text-capitalize font-weight-bold">MC: <%= @lineup.mc  %></h4>
+        </div>
 
-<%= link_to 'Edit', edit_lineup_path(@lineup) %> |
-<%= link_to 'Back', services_path %>
+      <div class="col-md-2">
+      </div>
+
+      <div class="col-md-8">
+
+            <div class="bg-light px-4 py-5 my-lg-5 my-md-2 my-sm-2">
+
+                <div class="d-flex justify-content-between align-items-center mx-auto">
+                    <div>
+                      <h2 class="font-weight-bold" style="margin-top: -30px;"><%= get_time_from_date(@lineup.service.starting_time)%> - <%= get_time_from_date(@lineup.service.closing_time)%></h2>
+                    </div>
+                    <p class="text-center">
+                        <svg width="25px" class="mb-1" fill="#9b5de5" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 321.883 321.883" style="enable-background:new 0 0 321.883 321.883;" xml:space="preserve">
+                            <path d="M160.941,0c-69.035,0-125,55.964-125,125.001c0,69.035,85.187,196.882,125,196.882c39.813,0,125-127.847,125-196.882
+                              C285.941,55.964,229.977,0,160.941,0z M160.941,182.294c-36.341,0-65.801-29.46-65.801-65.802c0-36.34,29.46-65.801,65.801-65.801
+                              c36.341,0,65.801,29.461,65.801,65.801C226.742,152.834,197.282,182.294,160.941,182.294z"/></svg>
+                        <small class="d-block font-weight-normal">Church Premisses</small>
+                    </p>
+                </div>
+
+                <%@lineup.programme.each do |prog| %>
+                    <div class="my-2">
+                      <div class="d-flex align-items-center">
+                          <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: blue"> </span>
+                          <small class="ml-1 text-secondary">
+                            <h6><%= prog.name %></h6>
+                          </small>
+                    </div>
+                      <p class="text-secondary" style="line-height: 2;">
+                      Facilitator: <%=prog.facilitator %><br>
+                      Time Allocated: <%=prog.time_allocation_in_minutes %> Minutes<br>
+                      </p>
+                  </div>
+                <% end %>
+
+            </div>
+
+      </div>
+
+      <div class="col-md-2">
+      </div>
+
+
+    </div>
+
+</div>

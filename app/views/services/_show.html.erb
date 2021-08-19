@@ -1,62 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Type:</strong>
-  <%= service.service_type %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= service.date %>
-</p>
-
-<p>
-  <strong>Male attendance:</strong>
-  <%= service.male_attendance %>
-</p>
-
-<p>
-  <strong>Female attendance:</strong>
-  <%= service.female_attendance %>
-</p>
-
-<p>
-  <strong>Number of new comers:</strong>
-  <%= service.number_of_new_comers %>
-</p>
-
-<p>
-  <strong>Offertory amount:</strong>
-  <%= service.offertory_amount %>
-</p>
-
-<p>
-  <strong>Tithe amount:</strong>
-  <%= service.tithe_amount %>
-</p>
-
-<p>
-  <strong>Starting time:</strong>
-  <%= service.starting_time %>
-</p>
-
-<p>
-  <strong>Closing time:</strong>
-  <%= service.closing_time %>
-</p>
 
 
-<p>
-  <strong>MC:</strong>
-  <%= service.lineup.mc %>
-</p>
 
 
-<p>
-  <strong>PLU:</strong><br>
-  <% service.lineup.programme.each do |activity| %>
-    <%= activity.name %> <%= activity.facilitator %> <%= activity.time_allocation_in_minutes %>  
-    <%= link_to 'Delete', activity, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
-    <br>
-  <% end %>
-</p>
+<div class="container" >
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+                    <br>
+            <h2 class="text-capitalize font-weight-bold">SCAN QR</h2>
+
+        </div>
+
+      <div class="col-md-4">
+      </div>
+
+      <div class="col-md-4">
+
+            <div class="bg-light px-4 py-5 my-lg-5 my-md-2 my-sm-2">
+
+               <%= @svg.html_safe %> 
+
+            </div>
+
+      </div>
+
+      <div class="col-md-4">
+      </div>
+
+
+    </div>
+
+</div>

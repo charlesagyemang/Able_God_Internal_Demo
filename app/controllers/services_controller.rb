@@ -10,6 +10,15 @@ class ServicesController < ApplicationController
 
   # GET /services/1 or /services/1.json
   def show
+    @qrcode = RQRCode::QRCode.new(url_for(@service.lineup))
+    @svg = @qrcode.as_svg(
+      color: "000",
+      shape_rendering: "crispEdges",
+      module_size: 11,
+      standalone: true,
+      use_path: true
+    )
+    @pulll = "ksksksksks"
   end
 
   # GET /services/new
