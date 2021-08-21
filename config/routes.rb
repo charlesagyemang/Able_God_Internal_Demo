@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  # get 'non_member/index'
+  get 'sundry/new_member_qr'
+  get 'sundry/add_new_member'
+  get 'sundry/member_created_successfully'
   resources :non_member
   resources :outreach_reports
   resources :leadership_reports
@@ -12,5 +14,4 @@ Rails.application.routes.draw do
   resources :departments
   devise_for :users
   root to: 'members#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,2 @@
+module SundryHelper
+end

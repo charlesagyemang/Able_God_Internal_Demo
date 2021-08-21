@@ -19,8 +19,8 @@
     <div class="col-sm">
 
       <div class="form-group">
-        <%= form.label :full_name, class: "col-md-4 control-label" %>
-        <%= form.text_field :name, class: "form-control" %>
+        <%= form.label :full_name %>
+        <%= form.text_field :name, class: "form-control", placeholder: "Eg. Emmanuel Appiah Koomson" %>
       </div>
 
     </div>
@@ -48,14 +48,14 @@
     <div class="col-sm">
         <div class="form-group">
           <%= form.label :phone_number %>
-          <%= form.text_field :phone_number, class: "form-control" %>
+          <%= form.text_field :phone_number, placeholder: "Eg. 0243983364", class: "form-control" %>
         </div>
     </div>
 
     <div class="col-sm">
        <div class="form-group">
           <%= form.label :whatsapp_number %>
-          <%= form.text_field :phone_number_two, class: "form-control" %>
+          <%= form.text_field :phone_number_two, placeholder: "Eg. 0243983364", class: "form-control" %>
         </div>
     </div>
 
@@ -67,8 +67,8 @@
     <div class="col-sm">  
 
       <div class="form-group">
-        <%= form.label :email, class: "col-md-4 control-label"  %>
-        <%= form.text_field :email, class: "form-control" %>
+        <%= form.label :email %>
+        <%= form.text_field :email, placeholder: "Eg. agba@gmail.com", class: "form-control" %>
       </div>
 
     </div>
@@ -81,7 +81,7 @@
     <div class="col-sm">   
       <div class="form-group">
         <%= form.label :year_joined %>
-        <%= form.text_field :year_joined, class: "form-control" %>
+        <%= form.text_field :year_joined, placeholder: "Eg. 2016", class: "form-control" %>
       </div>
     </div>
 
@@ -89,7 +89,7 @@
     <div class="col-sm">
        <div class="form-group">
         <%= form.label :occupation %>
-        <%= form.text_field :occupation, class: "form-control" %>
+        <%= form.text_field :occupation,  placeholder: "Eg. Trader", class: "form-control" %>
       </div>
     </div>
   </div>
@@ -170,12 +170,13 @@
 
   </div>
 
-  <div class="invisible">
+<div class="invisible">
     <div class="form-group">
         <%= form.label :creation_url %>
-        <%= form.text_field :creation_url, value: "MEMBERS_ENDPOINT" %>
+        <%= form.text_field :creation_url, value: "NEW_MEMBER_QR" %>
     </div>
-  </div>
+</div>
+
 
   <div class="row">
     <div class="col-sm">

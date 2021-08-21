@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_member, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[index show update destroy]
 
   # GET /members or /members.json
   def index
@@ -27,17 +27,22 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        if @member.membership_type == "VISITOR" || @member.membership_type == "NEW_SOUL"
-          format.html { redirect_to non_member_index_path, notice: "Member was successfully created." }
-          format.json { render :show, status: :created, location: @member }
+        if @member.creation_url == "NEW_MEMBER_QR"
+          format.html { redirect_to "/sundry/member_created_successfully/?name=#{@member.name.split(" ")[0]}", notice: "Member was successfully created." }
         else
-          format.html { redirect_to members_url, notice: "Member was successfully created." }
-          format.json { render :show, status: :created, location: @member }
+          if @member.membership_type == "VISITOR" || @member.membership_type == "NEW_SOUL"
+            format.html { redirect_to non_member_index_path, notice: "Member was successfully created." }
+            format.json { render :show, status: :created, location: @member }
+          else
+            format.html { redirect_to members_url, notice: "Member was successfully created." }
+            format.json { render :show, status: :created, location: @member }
+          end
         end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @member.errors, status: :unprocessable_entity }
       end
+
     end
   end
 
@@ -98,7 +103,8 @@ class MembersController < ApplicationController
         :phone_number_four,
         :year_joined,
         :whatsapp,
-        :membership_type
+        :membership_type,
+        :creation_url
       )
     end
 end
