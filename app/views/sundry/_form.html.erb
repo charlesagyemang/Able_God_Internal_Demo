@@ -161,13 +161,6 @@
 
     </div>
 
-    <div>
-        <div class="form-group">
-        <%= form.label :membership_type %>
-        <%= form.select(:membership_type, options_for_select(["FULL_MEMBER", "NEW_SOUL", "VISITOR"]))%>
-      </div>
-    </div>
-
   </div>
 
 <div class="invisible">
@@ -175,6 +168,13 @@
         <%= form.label :url_creation %>
         <%= form.text_field :url_creation, value: "NEW_MEMBER_QR" %>
     </div>
+</div>
+
+<div>
+  <div class="form-group">
+    <%= form.label :type %>
+    <%= form.select(:membership_type, options_for_select(["VISITOR", "FULL_MEMBER", "NEW_SOUL"]))%>
+  </div>
 </div>
 
 
