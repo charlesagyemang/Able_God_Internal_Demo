@@ -13,7 +13,7 @@ class SundryController < ApplicationController
     @svg = @qrcode.as_svg(
       color: "000",
       shape_rendering: "crispEdges",
-      module_size: 8,
+      module_size: 5,
       standalone: true,
       use_path: true
     )
