@@ -27,7 +27,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        if @member.creation_url == "NEW_MEMBER_QR"
+        if @member.url_creation == "NEW_MEMBER_QR"
           format.html { redirect_to "/sundry/member_created_successfully/?name=#{@member.name.split(" ")[0]}", notice: "Member was successfully created." }
         else
           if @member.membership_type == "VISITOR" || @member.membership_type == "NEW_SOUL"
@@ -104,7 +104,8 @@ class MembersController < ApplicationController
         :year_joined,
         :whatsapp,
         :membership_type,
-        :creation_url
+        :creation_url,
+        :url_creation
       )
     end
 end
