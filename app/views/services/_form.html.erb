@@ -11,57 +11,62 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= form.label :date %>
+    <span class="form-control"><%= form.date_select :date %></span>
+  </div>
+
   <div class="field">
     <%= form.label :service_type %>
-    <%= form.select(:service_type, options_for_select(["SUNDAY", "THURSDAY", "YOUTH-SERVICE", "WOMENS-FELLOWSHIP", "MENS-FELLOWSHIP", "CELL-MEETING","ALL-NIGHT" ,"OTHER", "REVIVAL"], :selected => form.object.service_type)) %>
+    <span class="form-control"><%= form.select(:service_type, options_for_select(["SUNDAY", "THURSDAY", "YOUTH-SERVICE", "WOMENS-FELLOWSHIP", "MENS-FELLOWSHIP", "CELL-MEETING","ALL-NIGHT" ,"OTHER", "REVIVAL"], :selected => form.object.service_type)) %></span>
   </div>
 
   <div class="field">
     <%= form.label :department_id %>
-    <%= collection_select(:service, :leader_id, Leader.where(:leader_type => "HEAD").includes(:department), :id, :department_leader, {:selected => service.leader_id}) %>
+    <%= collection_select(:service, :leader_id, Leader.where(:leader_type => "HEAD").includes(:department), :id, :department_leader, {:selected => service.leader_id}, { class: "form-control" } ) %>
   </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
+  <div class="invisible">
 
-  <div class="field">
-    <%= form.label :male_attendance %>
-    <%= form.number_field :male_attendance %>
-  </div>
+    <div class="field">
+      <%= form.label :male_attendance %>
+      <%= form.number_field :male_attendance %>
+    </div>
 
-  <div class="field">
-    <%= form.label :female_attendance %>
-    <%= form.number_field :female_attendance %>
-  </div>
+    <div class="field">
+      <%= form.label :female_attendance %>
+      <%= form.number_field :female_attendance %>
+    </div>
 
-  <div class="field">
-    <%= form.label :number_of_new_comers %>
-    <%= form.number_field :number_of_new_comers %>
-  </div>
+    <div class="field">
+      <%= form.label :number_of_new_comers %>
+      <%= form.number_field :number_of_new_comers %>
+    </div>
 
-  <div class="field">
-    <%= form.label :offertory_amount %>
-    <%= form.number_field :offertory_amount %>
-  </div>
+    <div class="field">
+      <%= form.label :offertory_amount %>
+      <%= form.number_field :offertory_amount %>
+    </div>
 
-  <div class="field">
-    <%= form.label :tithe_amount %>
-    <%= form.number_field :tithe_amount %>
-  </div>
+    <div class="field">
+      <%= form.label :tithe_amount %>
+      <%= form.number_field :tithe_amount %>
+    </div>
 
-  <div class="field">
-    <%= form.label :starting_time %>
-    <%= form.datetime_select :starting_time %>
-  </div>
+    <div class="field">
+      <%= form.label :starting_time %>
+      <%= form.datetime_select :starting_time %>
+    </div>
 
-  <div class="field">
-    <%= form.label :closing_time %>
-    <%= form.datetime_select :closing_time %>
+    <div class="field">
+      <%= form.label :closing_time %>
+      <%= form.datetime_select :closing_time %>
+    </div>
+
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Add Service", class: "btn btn-primary" %>
   </div>
 <% end %>
