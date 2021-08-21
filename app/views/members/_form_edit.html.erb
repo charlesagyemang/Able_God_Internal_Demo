@@ -28,7 +28,7 @@
   </div>
 
 
-
+ 
   <div class="row">
 
     <div class="col-sm">
@@ -63,20 +63,6 @@
 
 
   <div class="row">
-
-    <div class="col-sm">  
-
-      <div class="form-group">
-        <%= form.label :email, class: "col-md-4 control-label"  %>
-        <%= form.text_field :email, class: "form-control" %>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="row">
    
     <div class="col-sm">   
       <div class="form-group">
@@ -93,81 +79,91 @@
       </div>
     </div>
   </div>
-  
+
+
+  <div class="row">
+    <div class="col-sm">
+        <div class="form-group">
+          <%= form.check_box :primary_education, class: "form-control, form-check-label"%>
+          <%= form.label :JHS_LEVEL , class: "control-label"%>
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="form-group">
+          <%= form.check_box :secondary_education, class: "form-control, form-check-label" %>
+          <%= form.label :SHS_LEVEL %>
+        </div>
+    </div>
+    <div class="col-sm"> 
+      <div class="form-group">
+        <%= form.check_box :above_secondary, class: "form-control, form-check-label" %>
+        <%= form.label :TETIARY_LEVEL %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm">   
+      <div class="form-group">
+        <%= form.label :twitter_name %>
+        <%= form.text_field :twitter_name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="form-group">
+        <%= form.label :facebook_name %>
+        <%= form.text_field :facebook_name, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+
+   <div class="row">
+
+    <div class="col-sm">
+      <div class="form-group">
+        <%= form.label :phone_number_2 %>
+        <%= form.text_field :phone_number_three, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <div class="form-group">
+        <%= form.label :phone_number_3 %>
+        <%= form.text_field :phone_number_four, class: "form-control" %>
+      </div>
+    </div>
+
+
+   
+    <div class="col-sm">
+        <div class="form-group">
+          <%= form.label :telegram_number %>
+          <%= form.text_field :telegram_number, class: "form-control" %>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm">  
+
+      <div class="form-group">
+        <%= form.label :email, class: "col-md-4 control-label"  %>
+        <%= form.text_field :email, class: "form-control" %>
+      </div>
+
+    </div>
+
+  </div>
+
   <div class="invisible">
-
-    <div class="row">
-      <div class="col-sm">
-          <div class="form-group">
-            <%= form.check_box :primary_education, class: "form-control, form-check-label"%>
-            <%= form.label :JHS_LEVEL , class: "control-label"%>
-          </div>
-      </div>
-      <div class="col-sm">
-          <div class="form-group">
-            <%= form.check_box :secondary_education, class: "form-control, form-check-label" %>
-            <%= form.label :SHS_LEVEL %>
-          </div>
-      </div>
-      <div class="col-sm"> 
-        <div class="form-group">
-          <%= form.check_box :above_secondary, class: "form-control, form-check-label" %>
-          <%= form.label :TETIARY_LEVEL %>
-        </div>
-      </div>
+      <div class="form-group">
+      <%= form.label :membership_type %>
+      <%= form.select(:membership_type, options_for_select(["FULL_MEMBER"]))%>
     </div>
-
-    <div class="row">
-
-      <div class="col-sm">   
-        <div class="form-group">
-          <%= form.label :twitter_name %>
-          <%= form.text_field :twitter_name, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="form-group">
-          <%= form.label :facebook_name %>
-          <%= form.text_field :facebook_name, class: "form-control" %>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row">
-
-      <div class="col-sm">
-        <div class="form-group">
-          <%= form.label :phone_number_2 %>
-          <%= form.text_field :phone_number_three, class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="col-sm">
-        <div class="form-group">
-          <%= form.label :phone_number_3 %>
-          <%= form.text_field :phone_number_four, class: "form-control" %>
-        </div>
-      </div>
-
-
-    
-      <div class="col-sm">
-          <div class="form-group">
-            <%= form.label :telegram_number %>
-            <%= form.text_field :telegram_number, class: "form-control" %>
-          </div>
-      </div>
-
-    </div>
-
-    <div class="invisible">
-        <div class="form-group">
-        <%= form.label :membership_type %>
-        <%= form.select(:membership_type, options_for_select(["FULL_MEMBER"]))%>
-      </div>
-    </div>
-
   </div>
 
   <div class="row">
