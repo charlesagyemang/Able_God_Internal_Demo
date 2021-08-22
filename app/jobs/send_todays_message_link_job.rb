@@ -2,6 +2,6 @@ class SendTodaysMessageLinkJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    puts "lets send the message koraa"
+    puts "Send Sermon Link To Customers"
   end
 end
