@@ -15,7 +15,8 @@ class Member < ApplicationRecord
                 rejected_array.push({name: name, number: number})
             end
         end
-        puts "======= REJECTED ARRAY ========== #{rejected_array}"
+        puts "======= REJECTED ARRAY #{rejected_array} ========== "
+        puts "======= REJECTED ARRAY COUNT #{rejected_array.count} ========== "
         phone_number_arrays
     end
     
