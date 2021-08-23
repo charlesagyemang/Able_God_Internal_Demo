@@ -62,4 +62,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'resque'
 
-gem 'httparty'
+gem 'wittyflow'
