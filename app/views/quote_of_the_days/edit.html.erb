@@ -1,0 +1,20 @@
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3">
+        </div>
+         <div class="col-lg-6">
+         <br>
+             <h1>Editing Quote Of The Day</h1>
+             <br>
+            <%= render 'form', quote_of_the_day: @quote_of_the_day %>
+            <%= link_to 'Show', @quote_of_the_day %> |
+            <%= link_to 'Back', quote_of_the_days_path %>
+        </div>
+         <div class="col-lg-3">
+        </div>
+    </div>
+</div>
+

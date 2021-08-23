@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="container-fluid">
+
+  <h1>Quote Of The Day</h1>
+  <br>
+
+  <%= link_to 'Add New Quote', new_quote_of_the_day_path, class: "btn btn-primary", :style=> 'color:#FFFFFF;' %>
+  <br><br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date To Air</th>
+        <th scope="col">Quote</th>
+        <th scope="col">Author</th>
+
+        <th scope="col">Show</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @quote_of_the_days.each do |quote_of_the_day| %>
+        <tr>
+          <td><%= quote_of_the_day.date_to_air %></td>
+          <td><%= quote_of_the_day.quote %></td>
+          <td><%= quote_of_the_day.author %></td>
+
+          <td><%= link_to 'Show', quote_of_the_day, class: "btn btn-primary", :style=> 'color:#FFFFFF;' %></td>
+          <td><%= link_to 'Edit', edit_quote_of_the_day_path(quote_of_the_day), class: "btn btn-info", :style=> 'color:#FFFFFF;' %></td>
+          <td><%= link_to 'Destroy', quote_of_the_day, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger", :style=> 'color:#FFFFFF;' %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+

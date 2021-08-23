@@ -1,4 +1,7 @@
 class Member < ApplicationRecord
+
+    validates :phone_number, length: { minimum: 10 }
+    validates :phone_number, presence: true
     has_many :leaders, dependent: :destroy
 
     def self.get_all_valid_numbers

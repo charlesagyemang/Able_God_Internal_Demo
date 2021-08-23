@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  quote: MyText
+  date_to_air: 2021-08-23
+  author: MyString
+
+two:
+  title: MyString
+  quote: MyText
+  date_to_air: 2021-08-23
+  author: MyString

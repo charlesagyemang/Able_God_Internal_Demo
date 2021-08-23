@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_083942) do
+ActiveRecord::Schema.define(version: 2021_08_23_161045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 2021_08_21_083942) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lineup_id"], name: "index_programmes_on_lineup_id"
+  end
+
+  create_table "quote_of_the_days", force: :cascade do |t|
+    t.string "title"
+    t.text "quote"
+    t.date "date_to_air"
+    t.string "author"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "services", force: :cascade do |t|
