@@ -48,5 +48,22 @@ namespace :send_message do
       threads.map(&:join) 
 
     end
+
+
+    desc "SEND BIRTHDAY MESSAGES TO FOLK CELEBRATING TODAY"
+    task birthday_message: :environment do
+      sms_list_hash = Member.get_todays_birthdays
+      
+      threads = []
+      sms_list_hash.each do |member|
+        msg = member.form_birthday_message_today
+        threads << Thread.new do   
+          puts "======== AYELE ===== #{msg}"
+          SendBirthdayMessagesJob.perform_later(member.first_name, member.phone_number, msg)
+        end
+      end
+      threads.map(&:join) 
+    end
+
 end
   
