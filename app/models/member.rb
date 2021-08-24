@@ -26,26 +26,26 @@ class Member < ApplicationRecord
     def self.get_todays_birthdays 
         today = Date.today 
         year,month,day = today.to_s.split("-")
-        where('extract(month from birthday) = ? and extract(day from birthday) = ?', month, day)  
+        where('(membership_type = ? or membership_type = ?) and extract(month from birthday) = ? and extract(day from birthday) = ?', "FULL_MEMBER", nil, month, day)  
     end
 
     def self.get_up_coming_birthdays 
         today = Date.today 
         year,month,day = today.to_s.split("-")
-        where('extract(month from birthday) = ? and extract(day from birthday) > ?', month, day)
+        where('(membership_type = ? or membership_type = ?) and extract(month from birthday) = ? and extract(day from birthday) > ?', "FULL_MEMBER", nil, month, day)
     end
 
     def self.yesterdays_birthdays 
         today = Date.today 
         year,month,day = today.to_s.split("-")
-        where('extract(month from birthday) = ? and extract(day from birthday) > ?', month, day)
+        where('(membership_type = ? or membership_type = ?) and extract(month from birthday) = ? and extract(day from birthday) > ?', "FULL_MEMBER", nil, month, day)
     end
 
 
     def self.this_months_birthdays 
         today = Date.today 
         year,month,day = today.to_s.split("-")
-        where('extract(month from birthday) = ?', month)
+        where('(membership_type = ? or membership_type = ?) and extract(month from birthday) = ?', "FULL_MEMBER", nil, month)
     end
 
     def form_birthday_message_today
