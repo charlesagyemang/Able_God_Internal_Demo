@@ -73,7 +73,7 @@ namespace :send_message do
       puts "======== UPCOMING BIRTHDAYS THIS MONTH ===== #{months_list.count}"
 
       yesterdays_list = Member.yesterdays_birthdays
-      puts "======== YESTERDAYS BIRTHDAYS ===== #{yesterdays_list.count}"
+      puts "======== PAST BIRTHDAYS ===== #{yesterdays_list.count}"
 
       all_bithdays_this_month_past_or_present = Member.this_months_birthdays
       puts "======== all_bithdays_this_month_past_or_present ===== #{all_bithdays_this_month_past_or_present.count}"
