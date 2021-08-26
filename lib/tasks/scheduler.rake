@@ -80,6 +80,34 @@ namespace :send_message do
 
     end
 
+
+    desc "SEND THURSDAY ANNOUNCEMENTS"
+    task thursday: :environment do
+      sms_list_hash = Member.get_all_valid_numbers
+      puts "=========== STARTING NUMBER = #{sms_list_hash.count} ============= "
+      threads = []
+      sms_list_hash.each do |member|
+        threads << Thread.new do   
+          NotifyMembersJob.perform_later(member[:name], member[:number], "THURSDAY")
+        end
+      end
+      threads.map(&:join) 
+    end
+
+
+    desc "SEND SUNDAY ANNOUNCEMENTS"
+    task sunday: :environment do
+      sms_list_hash = Member.get_all_valid_numbers
+      puts "=========== STARTING NUMBER = #{sms_list_hash.count} ============= "
+      threads = []
+      sms_list_hash.each do |member|
+        threads << Thread.new do   
+          NotifyMembersJob.perform_later(member[:name], member[:number])
+        end
+      end
+      threads.map(&:join) 
+    end
+
     
 
 end
