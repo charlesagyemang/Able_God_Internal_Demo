@@ -108,6 +108,20 @@ namespace :send_message do
       threads.map(&:join) 
     end
 
+    desc "SEND GENERAL ANNOUNCEMENTS"
+    task latest_announcement: :environment do
+      sms_list_hash = Member.get_all_valid_numbers
+      message = Announcement.last.message
+      puts "=========== STARTING NUMBER = #{message} ============= "
+      threads = []
+      sms_list_hash.each do |member|
+        threads << Thread.new do   
+          SendAnnouncementsToMembersJob.perform_later(member[:name], member[:number], message)
+        end
+      end
+      threads.map(&:join) 
+    end
+
     
 
 end

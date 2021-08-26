@@ -6,7 +6,6 @@ class SendSmsTestJob < ApplicationJob
     puts "============ \n\n\n\n ====================="
     puts "============ SENDING SMS TO #{name} ON #{number} SMS LOGS: #{message} ====================="
     puts "============ \n\n\n\n ====================="
-
   end
 
 end
