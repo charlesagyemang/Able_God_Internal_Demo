@@ -1,0 +1,38 @@
+<%= form_with(model: announcement) do |form| %>
+  <% if announcement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+
+      <ul>
+        <% announcement.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="invisible">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_and_time_to_air %>
+     <%= form.datetime_select :time_to_air %>
+  </div>
+
+  <div class="field">
+    <%= form.label :full_announcement %>
+    <%= form.text_area :message, class: "form-control"  %>
+  </div>
+
+  <div class="invisible">
+    <%= form.label :date_to_air %>
+    <%= form.date_select :date_to_air, class: "form-control"  %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

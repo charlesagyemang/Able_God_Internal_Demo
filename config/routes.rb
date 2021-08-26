@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :announcements
   resources :quote_of_the_days
   get 'sundry/new_member_qr'
   get 'sundry/add_new_member'
