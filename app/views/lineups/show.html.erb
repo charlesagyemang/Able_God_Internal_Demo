@@ -34,14 +34,17 @@
                 <%@lineup.programme.each do |prog| %>
                     <div class="my-2">
                       <div class="d-flex align-items-center">
-                          <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: blue"> </span>
                           <small class="ml-1 text-secondary">
-                            <h5><%= prog.name %></h5>
+                            <h6> 
+                          <svg xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" height="25" viewBox="0 0 42 42" width="25" xmlns="http://www.w3.org/2000/svg" class="jsx-2550840333 absolute transform -translate-y-6 -translate-x-6 pointer-events-none text-purple-600"><circle cx="20.5" cy="20.5" fill="#FFFFFF" r="18.5" class="jsx-2550840333"></circle><path d="m21 0c-11.592 0-21 9.408-21 21s9.408 21 21 21 21-9.408 21-21-9.408-21-21-21zm-4.2 31.5-10.5-10.5 2.961-2.961 7.539 7.518 15.939-15.939 2.961 2.982z" fill="#7C3AED" class="jsx-2550840333"></path></svg>
+
+                            <strong><%= prog.name %></strong>
+                          </h6>
                           </small>
                     </div>
                       <p class="text-secondary" style="line-height: 2;">
-                      Facilitator: <%=prog.facilitator %><br>
-                      Time Allocated: <%=prog.time_allocation_in_minutes %><br>
+                      Facilitator: <strong><%=prog.facilitator %></strong><br>
+                      Time Allocated: <strong><%=prog.time_allocation_in_minutes %></strong><br>
                       </p>
                   </div>
                 <% end %>
