@@ -18,6 +18,9 @@ class SundryController < ApplicationController
       use_path: true
     )
   end
+
+  def messages_audio
+  end
   
 
 end
