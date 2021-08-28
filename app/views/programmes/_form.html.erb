@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= collection_select(:programme, :lineup_id, Lineup.all.includes(:service), :id, :type_with_date, { selected: params[:lineup]}, { class: "invisible" }) %>
+    <%= collection_select(:programme, :lineup_id, Lineup.all.includes(:service), :id, :type_with_date, { selected: params[:lineup] }) %>
   </div>
 
   <div class="field">
