@@ -12,7 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= collection_select(:programme, :lineup_id, Lineup.all, :id, :id, {}, { class: "invisible" }) %>
+    <%= form.label :name %>
+    <%= collection_select(:programme, :lineup_id, Lineup.all, :id, :id, { selected: programme.lineup_id }) %>
   </div>
 
   <div class="field">
