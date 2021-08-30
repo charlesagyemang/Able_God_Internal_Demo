@@ -3,7 +3,7 @@ class ServicesController < ApplicationController
 
   # GET /services or /services.json
   def index
-    @services = Service.order(date: :desc)
+    @services = Service.all
     @service = Service.new
     @programme = Programme.new
   end

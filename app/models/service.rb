@@ -1,5 +1,7 @@
 class Service < ApplicationRecord
 
+    default_scope { order(date: :desc) }
+
     has_one :lineup, dependent: :destroy
     has_one :department
 
